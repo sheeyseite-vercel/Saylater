@@ -1,5 +1,8 @@
 {
-  "brand": { "name": "SayLater", "tagline": "Dites-le. On l'organise." },
+  "brand": {
+    "name": "SayLater",
+    "tagline": "Dites-le. On l'organise."
+  },
   "common": {
     "save": "Enregistrer",
     "cancel": "Annuler",
@@ -36,7 +39,33 @@
     "login": "Se connecter",
     "register": "Créer un compte",
     "forgot": "Mot de passe oublié ?",
-    "google": "Continuer avec Google"
+    "google": "Continuer avec Google",
+    "name": "Nom complet",
+    "confirmPassword": "Confirmer le mot de passe",
+    "haveAccount": "Vous avez déjà un compte ?",
+    "noAccount": "Pas encore de compte ?",
+    "sendReset": "Envoyer le lien",
+    "resetSent": "Si un compte existe pour cet e-mail, un lien de réinitialisation vous a été envoyé.",
+    "logout": "Se déconnecter",
+    "loginTitle": "Content de vous revoir",
+    "registerTitle": "Créez votre compte",
+    "forgotTitle": "Réinitialiser le mot de passe",
+    "backToLogin": "Retour à la connexion",
+    "or": "ou",
+    "errors": {
+      "required": "Ce champ est obligatoire",
+      "email": "Saisissez une adresse e-mail valide",
+      "passwordShort": "Le mot de passe doit contenir au moins 8 caractères",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "invalidCredentials": "E-mail ou mot de passe incorrect",
+      "emailInUse": "Un compte existe déjà avec cet e-mail",
+      "weakPassword": "Mot de passe trop faible",
+      "tooManyRequests": "Trop de tentatives. Réessayez plus tard.",
+      "network": "Erreur réseau. Vérifiez votre connexion.",
+      "popupClosed": "La fenêtre de connexion a été fermée",
+      "notConfigured": "L'authentification n'est pas encore configurée",
+      "generic": "Une erreur est survenue. Veuillez réessayer."
+    }
   },
   "settings": {
     "language": "Langue",
@@ -46,5 +75,9 @@
     "theme": "Thème",
     "dark": "Sombre",
     "light": "Clair"
+  },
+  "dashboard": {
+    "welcome": "Bienvenue, {name}",
+    "verifyEmail": "Veuillez vérifier votre adresse e-mail. Un lien vous a été envoyé à l'inscription."
   }
 }

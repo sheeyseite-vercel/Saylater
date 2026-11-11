@@ -1,5 +1,8 @@
 {
-  "brand": { "name": "SayLater", "tagline": "Speak it. We'll organize it." },
+  "brand": {
+    "name": "SayLater",
+    "tagline": "Speak it. We'll organize it."
+  },
   "common": {
     "save": "Save",
     "cancel": "Cancel",
@@ -36,7 +39,33 @@
     "login": "Log in",
     "register": "Create account",
     "forgot": "Forgot password?",
-    "google": "Continue with Google"
+    "google": "Continue with Google",
+    "name": "Full name",
+    "confirmPassword": "Confirm password",
+    "haveAccount": "Already have an account?",
+    "noAccount": "No account yet?",
+    "sendReset": "Send reset link",
+    "resetSent": "If an account exists for this email, a reset link is on its way.",
+    "logout": "Log out",
+    "loginTitle": "Welcome back",
+    "registerTitle": "Create your account",
+    "forgotTitle": "Reset your password",
+    "backToLogin": "Back to log in",
+    "or": "or",
+    "errors": {
+      "required": "This field is required",
+      "email": "Enter a valid email address",
+      "passwordShort": "Password must be at least 8 characters",
+      "passwordMismatch": "Passwords do not match",
+      "invalidCredentials": "Incorrect email or password",
+      "emailInUse": "An account with this email already exists",
+      "weakPassword": "Password is too weak",
+      "tooManyRequests": "Too many attempts. Try again later.",
+      "network": "Network error. Check your connection.",
+      "popupClosed": "The sign-in window was closed",
+      "notConfigured": "Authentication is not configured yet",
+      "generic": "Something went wrong. Please try again."
+    }
   },
   "settings": {
     "language": "Language",
@@ -46,5 +75,9 @@
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light"
+  },
+  "dashboard": {
+    "welcome": "Welcome, {name}",
+    "verifyEmail": "Please verify your email address. We sent you a link when you registered."
   }
 }
