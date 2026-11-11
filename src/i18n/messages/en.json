@@ -64,7 +64,9 @@
       "network": "Network error. Check your connection.",
       "popupClosed": "The sign-in window was closed",
       "notConfigured": "Authentication is not configured yet",
-      "generic": "Something went wrong. Please try again."
+      "generic": "Something went wrong. Please try again.",
+      "unauthorizedDomain": "This website address is not authorized for sign-in yet.",
+      "popupBlocked": "The sign-in popup was blocked. Allow popups and try again."
     }
   },
   "settings": {
@@ -78,6 +80,9 @@
   },
   "dashboard": {
     "welcome": "Welcome, {name}",
-    "verifyEmail": "Please verify your email address. We sent you a link when you registered."
+    "verifyEmail": "Please verify your email address. We sent you a link when you registered.",
+    "resend": "Resend verification email",
+    "resent": "Sent. Check your inbox and your spam folder.",
+    "resendFailed": "Could not send the email. Try again in a few minutes."
   }
 }

@@ -64,7 +64,9 @@
       "network": "Erreur réseau. Vérifiez votre connexion.",
       "popupClosed": "La fenêtre de connexion a été fermée",
       "notConfigured": "L'authentification n'est pas encore configurée",
-      "generic": "Une erreur est survenue. Veuillez réessayer."
+      "generic": "Une erreur est survenue. Veuillez réessayer.",
+      "unauthorizedDomain": "Cette adresse de site n'est pas encore autorisée pour la connexion.",
+      "popupBlocked": "La fenêtre de connexion a été bloquée. Autorisez les pop-ups et réessayez."
     }
   },
   "settings": {
@@ -78,6 +80,9 @@
   },
   "dashboard": {
     "welcome": "Bienvenue, {name}",
-    "verifyEmail": "Veuillez vérifier votre adresse e-mail. Un lien vous a été envoyé à l'inscription."
+    "verifyEmail": "Veuillez vérifier votre adresse e-mail. Un lien vous a été envoyé à l'inscription.",
+    "resend": "Renvoyer l'e-mail de vérification",
+    "resent": "Envoyé. Vérifiez votre boîte de réception et vos spams.",
+    "resendFailed": "Impossible d'envoyer l'e-mail. Réessayez dans quelques minutes."
   }
 }

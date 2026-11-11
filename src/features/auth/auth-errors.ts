@@ -16,6 +16,10 @@ export function authErrorKey(e: unknown): string {
       return "errors.tooManyRequests";
     case "auth/network-request-failed":
       return "errors.network";
+    case "auth/unauthorized-domain":
+      return "errors.unauthorizedDomain";
+    case "auth/popup-blocked":
+      return "errors.popupBlocked";
     case "auth/popup-closed-by-user":
     case "auth/cancelled-popup-request":
       return "errors.popupClosed";
