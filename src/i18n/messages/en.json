@@ -1,0 +1,50 @@
+{
+  "brand": { "name": "SayLater", "tagline": "Speak it. We'll organize it." },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "offline": "You are offline"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "capture": "Capture",
+    "recordings": "Recordings",
+    "tasks": "Tasks",
+    "ideas": "Ideas",
+    "lists": "Lists",
+    "reminders": "Reminders",
+    "calendar": "Calendar",
+    "assistant": "Ask My Notes",
+    "search": "Search",
+    "insights": "Insights",
+    "settings": "Settings",
+    "billing": "Billing"
+  },
+  "landing": {
+    "headline": "Speak it. We'll organize it.",
+    "subhead": "Record naturally. SayLater transcribes, understands and turns your voice into tasks, ideas, lists and reminders you confirm.",
+    "cta": "Get started",
+    "signIn": "Sign in"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Log in",
+    "register": "Create account",
+    "forgot": "Forgot password?",
+    "google": "Continue with Google"
+  },
+  "settings": {
+    "language": "Language",
+    "interfaceLanguage": "Interface language",
+    "recordingLanguage": "Recording language",
+    "autoDetect": "Auto-detect",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light"
+  }
+}

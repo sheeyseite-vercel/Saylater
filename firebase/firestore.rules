@@ -1,0 +1,52 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+
+    // Fields the client may never write: identity and entitlements are server-controlled.
+    function keepsOwner(uid) { return request.resource.data.userId == uid; }
+    function ownerUnchanged() { return request.resource.data.userId == resource.data.userId; }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      // Profile document: client may edit display fields only; never entitlements.
+      allow create, update: if isOwner(userId)
+        && !request.resource.data.keys().hasAny(['plan', 'entitlements', 'subscription']);
+      allow delete: if false; // account deletion runs server-side
+
+      // Subscription and usage are written by the server only.
+      match /subscription/{doc} { allow read: if isOwner(userId); allow write: if false; }
+      match /usage/{doc}        { allow read: if isOwner(userId); allow write: if false; }
+      match /jobs/{doc}         { allow read: if isOwner(userId); allow write: if false; }
+
+      // Recordings: processing fields are server-written; client may edit title/editedTranscript.
+      match /recordings/{id} {
+        allow read: if isOwner(userId);
+        allow create: if false; // created by the server after upload validation
+        allow update: if isOwner(userId)
+          && ownerUnchanged()
+          && request.resource.data.diff(resource.data).affectedKeys()
+               .hasOnly(['title', 'editedTranscript', 'updatedAt']);
+        allow delete: if false; // deletion goes through the API so Storage is cleaned up too
+      }
+
+      match /{coll}/{id} {
+        allow read: if isOwner(userId)
+          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events', 'aiConversations', 'notifications'];
+        allow create: if isOwner(userId)
+          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events']
+          && keepsOwner(userId);
+        allow update: if isOwner(userId)
+          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events', 'notifications']
+          && ownerUnchanged();
+        allow delete: if isOwner(userId)
+          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events'];
+      }
+    }
+
+    match /{document=**} { allow read, write: if false; }
+  }
+}

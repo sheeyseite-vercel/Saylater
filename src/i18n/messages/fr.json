@@ -1,0 +1,50 @@
+{
+  "brand": { "name": "SayLater", "tagline": "Dites-le. On l'organise." },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "loading": "Chargement…",
+    "retry": "Réessayer",
+    "offline": "Vous êtes hors ligne"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "capture": "Enregistrer",
+    "recordings": "Enregistrements",
+    "tasks": "Tâches",
+    "ideas": "Idées",
+    "lists": "Listes",
+    "reminders": "Rappels",
+    "calendar": "Calendrier",
+    "assistant": "Interroger mes notes",
+    "search": "Recherche",
+    "insights": "Statistiques",
+    "settings": "Paramètres",
+    "billing": "Abonnement"
+  },
+  "landing": {
+    "headline": "Dites-le. On l'organise.",
+    "subhead": "Parlez naturellement. SayLater transcrit, comprend et transforme votre voix en tâches, idées, listes et rappels que vous confirmez.",
+    "cta": "Commencer",
+    "signIn": "Se connecter"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "login": "Se connecter",
+    "register": "Créer un compte",
+    "forgot": "Mot de passe oublié ?",
+    "google": "Continuer avec Google"
+  },
+  "settings": {
+    "language": "Langue",
+    "interfaceLanguage": "Langue de l'interface",
+    "recordingLanguage": "Langue de l'enregistrement",
+    "autoDetect": "Détection automatique",
+    "theme": "Thème",
+    "dark": "Sombre",
+    "light": "Clair"
+  }
+}

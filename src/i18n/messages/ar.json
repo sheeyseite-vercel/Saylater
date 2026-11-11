@@ -1,0 +1,50 @@
+{
+  "brand": { "name": "SayLater", "tagline": "قلها. ونحن ننظّمها." },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "loading": "جارٍ التحميل…",
+    "retry": "حاول مرة أخرى",
+    "offline": "أنت غير متصل بالإنترنت"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "capture": "تسجيل",
+    "recordings": "التسجيلات",
+    "tasks": "المهام",
+    "ideas": "الأفكار",
+    "lists": "القوائم",
+    "reminders": "التذكيرات",
+    "calendar": "التقويم",
+    "assistant": "اسأل ملاحظاتي",
+    "search": "بحث",
+    "insights": "الإحصاءات",
+    "settings": "الإعدادات",
+    "billing": "الاشتراك"
+  },
+  "landing": {
+    "headline": "قلها. ونحن ننظّمها.",
+    "subhead": "تحدّث بشكل طبيعي. يقوم SayLater بتفريغ صوتك وفهمه وتحويله إلى مهام وأفكار وقوائم وتذكيرات تؤكدها أنت.",
+    "cta": "ابدأ الآن",
+    "signIn": "تسجيل الدخول"
+  },
+  "auth": {
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "forgot": "نسيت كلمة المرور؟",
+    "google": "المتابعة باستخدام Google"
+  },
+  "settings": {
+    "language": "اللغة",
+    "interfaceLanguage": "لغة الواجهة",
+    "recordingLanguage": "لغة التسجيل",
+    "autoDetect": "كشف تلقائي",
+    "theme": "المظهر",
+    "dark": "داكن",
+    "light": "فاتح"
+  }
+}

@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // users/{uid}/recordings/{recordingId}/original.{ext}
+    match /users/{userId}/recordings/{recordingId}/{file} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.size < 50 * 1024 * 1024
+        && request.resource.contentType.matches('audio/.*|video/webm')
+        && file.matches('original\\..*');
+      allow update, delete: if false; // replacement and deletion are server-side
+    }
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}
