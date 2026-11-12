@@ -19,7 +19,8 @@ export interface Recording {
   title: string;
   audioPath: string | null; // null after the user deletes audio but keeps the transcript
   audioFormat: string;
-  durationSeconds: number;
+  audioBytes: number;
+  durationSeconds: number; // reported by the client; 0 when unknown
   language: string | null; // detected or user-selected recording language
   transcript: string; // original, never overwritten by AI output
   editedTranscript: string | null; // user edits live separately from the original

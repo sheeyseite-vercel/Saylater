@@ -1,35 +1,32 @@
 # SayLater — Speak it. We'll organize it.
 
-AI voice productivity PWA: Next.js (App Router) + Firebase + Vercel.
+AI voice productivity PWA: Next.js (App Router) + Firebase (Auth, Firestore) + Vercel (hosting, private Blob for audio).
 
 ## Status
 
-**Phase 1 (Foundation) is partially written and NOT yet installed, built or tested.**
-The code was authored without network access, so `npm install`, `next build`, `tsc` and
-`vitest` have not been run. Expect small fixes on first build.
+Nothing has been run locally (no package installs were possible while authoring); every phase is verified by the Vercel build and by manual testing on the deployed site. Unit tests exist but have **not been executed yet**.
 
 | Area | State |
 | --- | --- |
-| Config (TS strict, Tailwind, Next, PostCSS, Vitest) | written, unverified |
-| Design tokens, dark/light theme | written, unverified |
-| i18n en/fr/ar with RTL `dir` on `<html>` | written (starter strings only), unverified |
-| Firebase client/admin, bearer-token verification | written, unverified |
-| Firestore + Storage rules, indexes | written, **not tested in the emulator** |
-| STT / AI provider interfaces, fallback policy, Zod analysis schema | written, unit tests written, not run |
-| Concrete providers (OpenAI, Gemini, Groq, Anthropic, STT) | **not implemented** |
-| Auth UI, app shell, audio recorder, jobs, everything from Phase 2 on | **not started** |
+| Foundation: config, theme (dark/light), i18n ar/fr/en with RTL | working in production |
+| Phase 2: email + Google sign-in, password reset, httpOnly session cookie, route protection | working in production |
+| Phase 3: recorder (record/pause/resume/stop/cancel, waveform, crash recovery), file upload, private audio storage, recordings library, detail, rename, delete | built; needs manual testing |
+| Speech-to-text, AI analysis, tasks, ideas, lists, reminders, calendar, Ask My Notes, search, insights, PWA, push, billing | **not started** |
+| Concrete AI/STT providers | interfaces and fallback policy only |
+| Rate limiting, Firestore rules emulator tests, Playwright tests | **not done** |
+
+## Architecture notes
+
+- **Auth:** the browser signs in with the Firebase client SDK, then exchanges a fresh ID token for an httpOnly session cookie (`/api/auth/session`). Every server component and API route derives the user from that cookie; user ids are never taken from requests.
+- **Audio storage:** Vercel Blob **private** store (Firebase Storage needs a paid Blaze plan, so it is not used; `firebase/storage.rules` is unused). Path: `users/{uid}/recordings/{recordingId}/original.{ext}`. The browser uploads directly with a short-lived token issued by `/api/recordings/upload` (which checks the session, path ownership, content type, size and quota). `POST /api/recordings` then verifies the blob exists before creating the Firestore document. Playback goes through `/api/recordings/{id}/audio`, which checks ownership and sends `Cache-Control: private, no-store`.
+- **Limits (free plan defaults, server-enforced):** 25 MB, 10 minutes, 50 recordings — see `src/features/recordings/limits.ts`. Duration is reported by the client and only clamped by the server.
+- **Known limitations:** audio seeking depends on the browser (no HTTP Range support yet); recording stops when the page is left or the screen locks (browsers do not allow background microphone access); locally stored chunks (IndexedDB) are used to offer recovery after a crash or refresh.
+- **Firestore rules:** clients cannot create or delete recordings, nor write subscription/usage/jobs. Those go through server routes using Firebase Admin.
+- **Locale** lives in a cookie (no URL prefix), falling back to `Accept-Language`; it is independent of the recording language.
 
 ## Setup
 
 1. `cp .env.example .env.local` and fill in values (see comments in the file).
-2. Firebase: create a project, enable Email/Password and Google sign-in, create Firestore and
-   Storage, then `firebase deploy --only firestore,storage` to publish `firebase/*.rules` and indexes.
-3. `npm install && npm run typecheck && npm test && npm run dev`.
-4. Vercel: import the repo, add the same variables as Environment Variables.
-
-## Design decisions
-
-- Locale lives in a cookie (no URL prefix), falling back to `Accept-Language`; it is independent of the recording language.
-- Client Firestore rules cannot create or delete recordings, nor write subscription/usage/jobs; those go through server routes using Firebase Admin.
-- Provider failover only happens on transient errors; auth, billing and quota errors surface to the user.
-- AI output is validated with Zod; dates must be ISO-8601 or null, and reminders/events always require confirmation.
+2. Firebase: create a project, enable Email/Password and Google sign-in, create Firestore, add your deployment domains under Authentication → Settings → Authorized domains, and publish `firebase/firestore.rules`.
+3. Vercel: import the repo, create a **private** Blob store and connect it to the project (this adds `BLOB_READ_WRITE_TOKEN`), and add the other variables from `.env.example` as Environment Variables (mark secrets as Sensitive).
+4. `npm install && npm run typecheck && npm test && npm run dev`.
