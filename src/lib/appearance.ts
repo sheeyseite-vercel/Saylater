@@ -2,6 +2,16 @@
 export const FONT_COOKIE = "saylater_font";
 export const SIZE_COOKIE = "saylater_size";
 
+export const ACCENT_COOKIE = "saylater_accent";
+export const ACCENTS = ["blue", "teal", "violet", "orange", "graphite"] as const;
+export type AccentChoice = (typeof ACCENTS)[number];
+export const isAccent = (v: unknown): v is AccentChoice => (ACCENTS as readonly unknown[]).includes(v);
+
+// Swatch colours for the picker only (the live theme comes from CSS variables).
+export const ACCENT_SWATCH: Record<AccentChoice, string> = {
+  blue: "#2563eb", teal: "#0f766e", violet: "#7c3aed", orange: "#f97316", graphite: "#334155",
+};
+
 export const FONTS = ["default", "cairo", "tajawal", "naskh", "readable", "system"] as const;
 export const SIZES = ["sm", "md", "lg", "xl"] as const;
 export type FontChoice = (typeof FONTS)[number];

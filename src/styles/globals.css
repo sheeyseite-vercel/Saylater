@@ -4,37 +4,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 20 14% 8%;
+    --background: 220 20% 98%;
+    --foreground: 222 30% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 20 14% 8%;
-    --muted: 0 0% 93%;
-    --muted-foreground: 20 6% 36%;
-    --border: 0 0% 85%;
-    --ring: 24 100% 45%;
-    --primary: 24 100% 55%;
-    --primary-foreground: 20 14% 8%;
-    --accent: 24 90% 38%;
-    --ink: 20 14% 8%;
+    --card-foreground: 222 30% 12%;
+    --muted: 220 16% 95%;
+    --muted-foreground: 220 9% 40%;
+    --border: 220 14% 90%;
+    --ring: 221 83% 53%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 221 83% 46%;
     --destructive: 0 72% 46%;
     --success: 152 60% 30%;
   }
   .dark {
-    --background: 0 0% 6%;
-    --foreground: 0 0% 96%;
-    --card: 0 0% 9.5%;
-    --card-foreground: 0 0% 96%;
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 66%;
-    --border: 0 0% 19%;
-    --ring: 26 100% 60%;
-    --primary: 26 100% 58%;
-    --primary-foreground: 20 14% 8%;
-    --accent: 26 100% 66%;
-    --ink: 0 0% 92%;
+    --background: 225 18% 8%;
+    --foreground: 220 20% 96%;
+    --card: 224 16% 11%;
+    --card-foreground: 220 20% 96%;
+    --muted: 224 14% 16%;
+    --muted-foreground: 220 10% 68%;
+    --border: 224 13% 20%;
+    --ring: 217 91% 64%;
+    --primary: 221 83% 56%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 217 91% 68%;
     --destructive: 0 80% 62%;
     --success: 152 55% 50%;
   }
+  /* User-selectable accent colour (Settings). Blue is the default and lives in :root above. */
+  html[data-accent="teal"] { --primary: 173 80% 30%; --ring: 173 80% 30%; --accent: 173 80% 26%; }
+  html[data-accent="teal"].dark { --primary: 172 66% 42%; --ring: 172 66% 50%; --accent: 172 66% 55%; }
+  html[data-accent="violet"] { --primary: 252 83% 55%; --ring: 252 83% 55%; --accent: 252 83% 48%; }
+  html[data-accent="violet"].dark { --primary: 252 83% 62%; --ring: 252 90% 72%; --accent: 252 90% 76%; }
+  html[data-accent="orange"] { --primary: 24 94% 50%; --primary-foreground: 20 14% 8%; --ring: 24 94% 45%; --accent: 24 90% 38%; }
+  html[data-accent="orange"].dark { --primary: 26 96% 58%; --primary-foreground: 20 14% 8%; --ring: 26 96% 62%; --accent: 26 96% 66%; }
+  html[data-accent="graphite"] { --primary: 222 20% 20%; --ring: 222 20% 30%; --accent: 222 20% 20%; }
+  html[data-accent="graphite"].dark { --primary: 220 15% 88%; --primary-foreground: 222 30% 10%; --ring: 220 15% 80%; --accent: 220 15% 88%; }
   * { @apply border-border; }
   html { font-size: 16px; }
   html[data-size="sm"] { font-size: 14.5px; }
@@ -53,12 +60,9 @@
 }
 
 @layer components {
-  /* Flat panel: a hairline outline, no blur, no shadow. */
-  .glass { @apply bg-card border border-border; }
+  .glass { @apply bg-card border border-border shadow-sm; }
   .brand-gradient { background-color: hsl(var(--primary)); }
-  /* "Key" buttons: solid orange with an ink outline and a hard bottom edge that presses in. */
-  .sticker { border: 2px solid hsl(var(--ink)); box-shadow: 0 3px 0 0 hsl(var(--ink)); transition: transform 80ms, box-shadow 80ms; }
-  .sticker:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 0 0 0 hsl(var(--ink)); }
+  .btn-solid { @apply bg-primary text-primary-foreground shadow-sm transition hover:brightness-110 active:scale-[0.98]; }
   .row-hover { @apply transition-colors hover:bg-muted/60; }
 }
 

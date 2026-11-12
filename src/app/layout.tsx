@@ -5,7 +5,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { isRtl, type Locale } from "@/i18n/config";
 import { PwaRegister } from "@/components/providers/pwa-register";
-import { FONT_COOKIE, SIZE_COOKIE, isFont, isSize } from "@/lib/appearance";
+import { ACCENT_COOKIE, FONT_COOKIE, SIZE_COOKIE, isAccent, isFont, isSize } from "@/lib/appearance";
 import { fontVariables } from "@/lib/fonts";
 import "@/styles/globals.css";
 
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   viewportFit: "cover", // lets the bottom bar respect phone safe areas
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0f0f0f" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e1118" },
     { media: "(prefers-color-scheme: light)", color: "#fafafa" },
   ],
 };
@@ -30,6 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const jar = await cookies();
   const font = jar.get(FONT_COOKIE)?.value;
   const size = jar.get(SIZE_COOKIE)?.value;
+  const accent = jar.get(ACCENT_COOKIE)?.value;
 
   return (
     <html
@@ -37,6 +38,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       dir={isRtl(locale) ? "rtl" : "ltr"}
       className={fontVariables}
       data-font={isFont(font) ? font : "default"}
+      data-accent={isAccent(accent) ? accent : "blue"}
       data-size={isSize(size) ? size : "md"}
       suppressHydrationWarning
     >

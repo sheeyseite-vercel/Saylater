@@ -31,7 +31,7 @@ export function AppNav({ variant }: { variant: "sidebar" | "bottom" }) {
               "relative flex items-center gap-3 text-sm transition-colors",
               bottom ? "flex-col gap-1 pb-1 pt-2 text-xs" : "border-s-[3px] px-3 py-2.5",
               !bottom && (active ? "border-primary" : "border-transparent hover:bg-muted/60"),
-              active ? "font-bold text-foreground" : "text-muted-foreground",
+              active ? "font-semibold text-foreground" : "text-muted-foreground",
             )}
           >
             {bottom && active && <span aria-hidden="true" className="absolute inset-x-5 -top-2 h-[3px] bg-primary" />}

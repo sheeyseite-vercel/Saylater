@@ -53,10 +53,10 @@ export default async function RecordingsPage({
   return (
     <main className="mx-auto max-w-3xl space-y-6 px-4 py-6">
       <div className="flex items-center justify-between gap-3">
-        <h1 className="text-3xl font-extrabold tracking-tight">{t("title")}</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
         <Link
           href="/capture"
-          className="sticker inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-xl bg-primary px-4 text-sm font-bold text-primary-foreground"
+          className="btn-solid inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground"
         >
           <Mic className="h-4 w-4" aria-hidden="true" />
           {t("newRecording")}

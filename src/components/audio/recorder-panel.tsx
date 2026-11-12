@@ -167,7 +167,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
       {!result && (
         <section className="glass space-y-6 rounded-2xl p-6 text-center">
           <Waveform analyser={rec.analyser} active={status === "recording"} />
-          <p className="text-6xl font-extrabold tabular-nums" aria-live="off" dir="ltr">
+          <p className="text-6xl font-semibold tabular-nums" aria-live="off" dir="ltr">
             {formatClock(rec.elapsedMs)}
           </p>
           <p className="flex items-center justify-center gap-2 text-sm text-muted-foreground" role="status">
@@ -187,7 +187,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
                 onClick={() => void rec.start({ noiseReduction })}
                 disabled={status === "requesting"}
                 aria-label={t("start")}
-                className="sticker flex h-24 w-24 items-center justify-center rounded-full bg-primary text-primary-foreground disabled:opacity-60"
+                className="btn-solid flex h-24 w-24 items-center justify-center rounded-full bg-primary text-primary-foreground disabled:opacity-60"
               >
                 <Mic className="h-10 w-10" />
               </button>
@@ -215,7 +215,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
                   type="button"
                   onClick={rec.stop}
                   aria-label={t("stop")}
-                  className="sticker flex h-20 w-20 items-center justify-center rounded-full bg-destructive text-primary-foreground"
+                  className="btn-solid flex h-20 w-20 items-center justify-center rounded-full bg-destructive text-white"
                 >
                   <Square className="h-8 w-8" />
                 </button>

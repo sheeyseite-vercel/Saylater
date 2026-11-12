@@ -5,9 +5,9 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const VARIANTS = {
-  primary: "sticker bg-primary text-primary-foreground",
+  primary: "btn-solid bg-primary text-primary-foreground",
   ghost: "border border-border bg-card hover:bg-muted",
-  danger: "sticker bg-destructive text-primary-foreground",
+  danger: "btn-solid bg-destructive text-white",
 } as const;
 
 export function Button({ variant = "primary", className, ...props }: Props) {

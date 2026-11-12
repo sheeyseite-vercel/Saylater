@@ -38,7 +38,7 @@ export function LockScreen({ uid, onUnlock }: { uid: string; onUnlock: () => voi
       aria-label={t("locked")}
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-background px-6"
     >
-      <div className="sticker flex h-16 w-16 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+      <div className="btn-solid flex h-16 w-16 items-center justify-center rounded-xl bg-primary text-primary-foreground">
         <Lock className="h-7 w-7" aria-hidden="true" />
       </div>
       <div className="text-center">

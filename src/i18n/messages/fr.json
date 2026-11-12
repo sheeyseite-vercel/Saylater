@@ -105,7 +105,15 @@
     "saveName": "Enregistrer",
     "nameSaved": "Nom enregistré",
     "nameFailed": "Impossible d’enregistrer le nom. Réessayez.",
-    "email": "E-mail"
+    "email": "E-mail",
+    "accent": "Couleur d’accent",
+    "accents": {
+      "blue": "Bleu",
+      "teal": "Sarcelle",
+      "violet": "Violet",
+      "orange": "Orange",
+      "graphite": "Graphite"
+    }
   },
   "dashboard": {
     "welcome": "Bienvenue, {name}",

@@ -34,7 +34,7 @@ export function ProfileSettings({ initialName, email }: { initialName: string; e
 
   return (
     <section className="glass space-y-4 rounded-2xl p-5 sm:p-6">
-      <h2 className="font-bold">{t("profile")}</h2>
+      <h2 className="font-semibold">{t("profile")}</h2>
       <form
         className="space-y-1.5"
         onSubmit={(e) => {

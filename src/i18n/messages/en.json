@@ -105,7 +105,15 @@
     "saveName": "Save",
     "nameSaved": "Name saved",
     "nameFailed": "Could not save the name. Try again.",
-    "email": "Email"
+    "email": "Email",
+    "accent": "Accent colour",
+    "accents": {
+      "blue": "Blue",
+      "teal": "Teal",
+      "violet": "Violet",
+      "orange": "Orange",
+      "graphite": "Graphite"
+    }
   },
   "dashboard": {
     "welcome": "Welcome, {name}",

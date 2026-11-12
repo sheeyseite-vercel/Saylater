@@ -15,13 +15,13 @@ async function DashboardData({ uid }: { uid: string }) {
   return (
     <>
       <p className="flex items-baseline gap-3">
-        <span className="text-6xl font-extrabold tabular-nums leading-none">{total}</span>
+        <span className="text-6xl font-semibold tabular-nums leading-none">{total}</span>
         <span className="text-muted-foreground">{t("totalRecordings")}</span>
       </p>
 
       <section className="space-y-2">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold">{t("recent")}</h2>
+          <h2 className="text-lg font-semibold">{t("recent")}</h2>
           {total > 0 && (
             <Link href="/recordings" className="text-sm text-accent">
               {t("viewAll")}
@@ -53,10 +53,10 @@ export default async function DashboardPage() {
 
       <Link
         href="/capture"
-        className="sticker flex items-center justify-between gap-4 rounded-xl bg-primary p-6 text-primary-foreground"
+        className="btn-solid flex items-center justify-between gap-4 rounded-xl bg-primary p-5 text-primary-foreground"
       >
-        <span className="text-3xl font-extrabold leading-tight tracking-tight">{t("quickRecord")}</span>
-        <Mic className="h-10 w-10 shrink-0" aria-hidden="true" />
+        <span className="text-xl font-semibold">{t("quickRecord")}</span>
+        <Mic className="h-7 w-7 shrink-0" aria-hidden="true" />
       </Link>
 
       {/* The button renders immediately; the data streams in behind a skeleton. */}

@@ -14,7 +14,7 @@ export function brandIcon(size: number, opts: { maskable?: boolean } = {}) {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: radius,
-          background: "linear-gradient(135deg, #fb923c 0%, #f59e0b 100%)",
+          background: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)",
         }}
       >
         <svg width={glyph} height={glyph} viewBox="0 0 24 24" fill="none">

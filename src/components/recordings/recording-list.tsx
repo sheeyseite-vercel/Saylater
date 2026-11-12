@@ -11,7 +11,7 @@ export function RecordingList({ items }: { items: Recording[] }) {
       {items.map((r) => (
         <li key={r.id}>
           <Link href={`/recordings/${r.id}`} className="row-hover flex items-center gap-4 px-1 py-4">
-            <span dir="ltr" className="w-12 shrink-0 text-lg font-extrabold tabular-nums">
+            <span dir="ltr" className="w-12 shrink-0 text-lg font-semibold tabular-nums">
               {formatDuration(r.durationSeconds)}
             </span>
             <div className="min-w-0 flex-1">

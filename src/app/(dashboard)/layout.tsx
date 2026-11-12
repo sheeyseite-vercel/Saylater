@@ -8,7 +8,7 @@ import { AppLockProvider } from "@/components/app-lock/app-lock-provider";
 import { LOCK_COOKIE } from "@/features/app-lock/lock";
 
 const Brand = () => (
-  <Link href="/dashboard" className="inline-flex items-center gap-2 text-xl font-extrabold tracking-tight">
+  <Link href="/dashboard" className="inline-flex items-center gap-2 text-xl font-semibold tracking-tight">
     <span aria-hidden="true" className="h-3 w-3 rounded-sm bg-primary" />
     SayLater
   </Link>
