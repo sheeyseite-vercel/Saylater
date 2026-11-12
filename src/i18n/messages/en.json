@@ -99,7 +99,13 @@
       "md": "Normal",
       "lg": "Large",
       "xl": "Extra large"
-    }
+    },
+    "profile": "Profile",
+    "displayName": "Display name",
+    "saveName": "Save",
+    "nameSaved": "Name saved",
+    "nameFailed": "Could not save the name. Try again.",
+    "email": "Email"
   },
   "dashboard": {
     "welcome": "Welcome, {name}",

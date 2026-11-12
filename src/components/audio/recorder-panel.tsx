@@ -167,7 +167,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
       {!result && (
         <section className="glass space-y-6 rounded-2xl p-6 text-center">
           <Waveform analyser={rec.analyser} active={status === "recording"} />
-          <p className="text-4xl font-semibold tabular-nums" aria-live="off" dir="ltr">
+          <p className="text-6xl font-extrabold tabular-nums" aria-live="off" dir="ltr">
             {formatClock(rec.elapsedMs)}
           </p>
           <p className="flex items-center justify-center gap-2 text-sm text-muted-foreground" role="status">
@@ -187,7 +187,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
                 onClick={() => void rec.start({ noiseReduction })}
                 disabled={status === "requesting"}
                 aria-label={t("start")}
-                className="brand-gradient flex h-24 w-24 items-center justify-center rounded-full text-primary-foreground shadow-[0_0_50px_-8px_hsl(var(--primary)/0.7)] transition active:scale-95 disabled:opacity-60"
+                className="sticker flex h-24 w-24 items-center justify-center rounded-full bg-primary text-primary-foreground disabled:opacity-60"
               >
                 <Mic className="h-10 w-10" />
               </button>
@@ -215,7 +215,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
                   type="button"
                   onClick={rec.stop}
                   aria-label={t("stop")}
-                  className="flex h-20 w-20 items-center justify-center rounded-full bg-destructive text-primary-foreground shadow-xl"
+                  className="sticker flex h-20 w-20 items-center justify-center rounded-full bg-destructive text-primary-foreground"
                 >
                   <Square className="h-8 w-8" />
                 </button>
@@ -304,7 +304,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
           {uploading && (
             <div role="progressbar" aria-valuenow={progress ?? 0} aria-valuemin={0} aria-valuemax={100}>
               <div className="h-2 overflow-hidden rounded-full bg-muted">
-                <div className="brand-gradient h-full transition-all" style={{ width: `${progress ?? 0}%` }} />
+                <div className="h-full bg-primary transition-all" style={{ width: `${progress ?? 0}%` }} />
               </div>
               <p className="mt-1 text-xs text-muted-foreground">{t("uploading", { percent: progress ?? 0 })}</p>
             </div>

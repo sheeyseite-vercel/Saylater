@@ -14,7 +14,7 @@ async function RecordingsData({ uid, after }: { uid: string; after: string | nul
   return (
     <>
       {items.length === 0 ? (
-        <div className="glass rounded-2xl p-8 text-center">
+        <div className="rounded-xl border border-dashed border-border p-8 text-center">
           <p className="font-medium">{t("empty")}</p>
           <p className="mt-1 text-sm text-muted-foreground">{t("emptyHint")}</p>
         </div>
@@ -51,12 +51,12 @@ export default async function RecordingsPage({
   const t = await getTranslations("recordings");
 
   return (
-    <main className="mx-auto max-w-3xl space-y-6 px-4 py-8">
+    <main className="mx-auto max-w-3xl space-y-6 px-4 py-6">
       <div className="flex items-center justify-between gap-3">
-        <h1 className="text-2xl font-semibold">{t("title")}</h1>
+        <h1 className="text-3xl font-extrabold tracking-tight">{t("title")}</h1>
         <Link
           href="/capture"
-          className="brand-gradient inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-xl px-4 text-sm font-medium text-primary-foreground"
+          className="sticker inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-xl bg-primary px-4 text-sm font-bold text-primary-foreground"
         >
           <Mic className="h-4 w-4" aria-hidden="true" />
           {t("newRecording")}

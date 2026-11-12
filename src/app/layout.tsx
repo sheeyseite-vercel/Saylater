@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   viewportFit: "cover", // lets the bottom bar respect phone safe areas
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#110d0a" },
-    { media: "(prefers-color-scheme: light)", color: "#fdf8f3" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f0f0f" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
   ],
 };
 

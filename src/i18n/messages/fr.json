@@ -99,7 +99,13 @@
       "md": "Normale",
       "lg": "Grande",
       "xl": "Très grande"
-    }
+    },
+    "profile": "Profil",
+    "displayName": "Nom affiché",
+    "saveName": "Enregistrer",
+    "nameSaved": "Nom enregistré",
+    "nameFailed": "Impossible d’enregistrer le nom. Réessayez.",
+    "email": "E-mail"
   },
   "dashboard": {
     "welcome": "Bienvenue, {name}",

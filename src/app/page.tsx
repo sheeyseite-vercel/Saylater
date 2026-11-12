@@ -5,19 +5,17 @@ import { Mic } from "lucide-react";
 export default function LandingPage() {
   const t = useTranslations();
   return (
-    <main className="relative mx-auto flex min-h-dvh max-w-3xl flex-col items-center justify-center gap-8 px-4 text-center">
-      <div className="brand-gradient flex h-24 w-24 items-center justify-center rounded-[1.75rem] text-primary-foreground shadow-[0_0_80px_-10px_hsl(var(--primary)/0.65)]">
-        <Mic className="h-11 w-11" aria-hidden="true" />
-      </div>
-      <h1 className="brand-gradient bg-clip-text text-4xl font-bold leading-tight text-transparent sm:text-6xl">
-        {t("landing.headline")}
-      </h1>
+    <main className="mx-auto flex min-h-dvh max-w-3xl flex-col items-start justify-center gap-8 px-6">
+      <span className="sticker flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
+        <Mic className="h-7 w-7" aria-hidden="true" />
+      </span>
+      <h1 className="text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-7xl">{t("landing.headline")}</h1>
       <p className="max-w-xl text-lg text-muted-foreground">{t("landing.subhead")}</p>
-      <div className="flex flex-wrap justify-center gap-3">
-        <Link href="/register" className="brand-gradient rounded-xl px-7 py-3 font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition active:scale-[0.98]">
+      <div className="flex flex-wrap gap-3">
+        <Link href="/register" className="sticker rounded-xl bg-primary px-7 py-3 font-bold text-primary-foreground">
           {t("landing.cta")}
         </Link>
-        <Link href="/login" className="glass rounded-xl px-7 py-3 font-medium transition hover:bg-muted">
+        <Link href="/login" className="rounded-xl border border-border bg-card px-7 py-3 font-semibold hover:bg-muted">
           {t("landing.signIn")}
         </Link>
       </div>

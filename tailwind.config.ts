@@ -20,7 +20,7 @@ const config: Config = {
         destructive: "hsl(var(--destructive))",
         success: "hsl(var(--success))",
       },
-      borderRadius: { xl: "1rem", "2xl": "1.5rem" },
+      borderRadius: { xl: "0.5rem", "2xl": "0.75rem" },
       fontFamily: {
         sans: ["var(--font-inter)", "var(--font-arabic)", "system-ui", "sans-serif"],
         arabic: ["var(--font-arabic)", "system-ui", "sans-serif"],

@@ -14,14 +14,14 @@ async function DashboardData({ uid }: { uid: string }) {
   const [total, recent] = await Promise.all([countRecordings(uid), listRecordings(uid, { limit: 5 })]);
   return (
     <>
-      <section className="glass rounded-2xl p-5">
-        <p className="text-sm text-muted-foreground">{t("totalRecordings")}</p>
-        <p className="text-4xl font-semibold tabular-nums">{total}</p>
-      </section>
+      <p className="flex items-baseline gap-3">
+        <span className="text-6xl font-extrabold tabular-nums leading-none">{total}</span>
+        <span className="text-muted-foreground">{t("totalRecordings")}</span>
+      </p>
 
-      <section className="space-y-3">
+      <section className="space-y-2">
         <div className="flex items-center justify-between">
-          <h2 className="font-semibold">{t("recent")}</h2>
+          <h2 className="text-lg font-bold">{t("recent")}</h2>
           {total > 0 && (
             <Link href="/recordings" className="text-sm text-accent">
               {t("viewAll")}
@@ -41,14 +41,11 @@ async function DashboardData({ uid }: { uid: string }) {
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard");
   const user = await getSessionUser();
-  const name = user?.name ?? user?.email?.split("@")[0] ?? "";
 
   return (
-    <main className="mx-auto max-w-3xl space-y-6 px-4 py-8">
-      <h1 className="text-2xl font-semibold">{t("welcome", { name })}</h1>
-
+    <main className="mx-auto max-w-3xl space-y-8 px-4 py-6">
       {user && !user.emailVerified && (
-        <div role="status" className="glass rounded-xl p-4 text-sm text-muted-foreground">
+        <div role="status" className="rounded-xl border border-border p-4 text-sm text-muted-foreground">
           <p>{t("verifyEmail")}</p>
           <ResendVerification />
         </div>
@@ -56,20 +53,20 @@ export default async function DashboardPage() {
 
       <Link
         href="/capture"
-        className="brand-gradient flex items-center justify-center gap-3 rounded-2xl p-6 text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition active:scale-[0.99]"
+        className="sticker flex items-center justify-between gap-4 rounded-xl bg-primary p-6 text-primary-foreground"
       >
-        <Mic className="h-6 w-6" aria-hidden="true" />
-        {t("quickRecord")}
+        <span className="text-3xl font-extrabold leading-tight tracking-tight">{t("quickRecord")}</span>
+        <Mic className="h-10 w-10 shrink-0" aria-hidden="true" />
       </Link>
 
-      {/* The greeting and button render immediately; the data streams in behind a skeleton. */}
+      {/* The button renders immediately; the data streams in behind a skeleton. */}
       {user && (
         <Suspense
           fallback={
             <>
-              <Skeleton className="h-24 w-full" />
-              <Skeleton className="h-20 w-full" />
-              <Skeleton className="h-20 w-full" />
+              <Skeleton className="h-14 w-40" />
+              <Skeleton className="h-16 w-full" />
+              <Skeleton className="h-16 w-full" />
             </>
           }
         >
