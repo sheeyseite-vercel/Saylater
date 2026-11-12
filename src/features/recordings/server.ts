@@ -3,6 +3,7 @@ import { Timestamp, type DocumentSnapshot } from "firebase-admin/firestore";
 import { adminDb } from "@/lib/firebase/admin";
 import { HttpError } from "@/lib/api";
 import type { ProcessingStatus, Recording } from "@/types/domain";
+import { analysisResultSchema } from "@/lib/ai/schemas/analysis";
 import { FREE_MAX_RECORDINGS } from "./limits";
 
 export const recordingsCol = (uid: string) => adminDb().collection(`users/${uid}/recordings`);
@@ -28,6 +29,8 @@ export function toRecording(snap: DocumentSnapshot): Recording | null {
     processingStatus: (d.processingStatus ?? "uploaded") as ProcessingStatus,
     transcriptionProvider: typeof d.transcriptionProvider === "string" ? d.transcriptionProvider : null,
     analysisProvider: typeof d.analysisProvider === "string" ? d.analysisProvider : null,
+    analysis: d.analysis ? (analysisResultSchema.safeParse(d.analysis).data ?? null) : null,
+    processingError: typeof d.processingError === "string" ? d.processingError : null,
     createdAt: iso(d.createdAt),
     updatedAt: iso(d.updatedAt),
   };

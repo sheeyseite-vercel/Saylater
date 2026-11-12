@@ -35,15 +35,15 @@ service cloud.firestore {
 
       match /{coll}/{id} {
         allow read: if isOwner(userId)
-          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events', 'aiConversations', 'notifications'];
+          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events', 'notes', 'aiConversations', 'notifications'];
         allow create: if isOwner(userId)
-          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events']
+          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events', 'notes']
           && keepsOwner(userId);
         allow update: if isOwner(userId)
-          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events', 'notifications']
+          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events', 'notes', 'notifications']
           && ownerUnchanged();
         allow delete: if isOwner(userId)
-          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events'];
+          && coll in ['tasks', 'ideas', 'lists', 'reminders', 'events', 'notes'];
       }
     }
 

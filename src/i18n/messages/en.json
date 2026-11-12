@@ -175,5 +175,68 @@
       "completed": "Completed",
       "failed": "Failed"
     }
+  },
+  "processing": {
+    "transcript": "Transcript",
+    "start": "Transcribe and analyze",
+    "retry": "Try again",
+    "noAudio": "The audio was deleted, so there is nothing to transcribe.",
+    "edit": "Edit",
+    "saveEdit": "Save changes",
+    "cancel": "Cancel",
+    "editedNote": "Edited by you. The original transcript is kept.",
+    "resetOriginal": "Restore original",
+    "transcriptSaved": "Transcript saved. Use “Analyze again” to update the results.",
+    "transcriptSaveFailed": "Could not save the transcript. Try again.",
+    "reanalyze": "Analyze again",
+    "summary": "Summary",
+    "running": {
+      "transcription_queued": "Starting…",
+      "transcribing": "Transcribing your recording…",
+      "analysis_queued": "Starting analysis…",
+      "analyzing": "Finding tasks, ideas and reminders…"
+    },
+    "errors": {
+      "auth": "The AI service key was rejected. Check the server configuration.",
+      "billing": "The AI service reports a billing problem.",
+      "quota": "The AI service quota is used up. Try again later.",
+      "rate_limit": "The AI service is busy. Try again in a minute.",
+      "unavailable": "The AI service is unavailable right now. Try again.",
+      "invalid_input": "The result could not be validated. Try again, or edit the transcript first.",
+      "no_speech": "No speech was detected in this recording.",
+      "audio_missing": "The audio file could not be found.",
+      "unknown": "Something went wrong. Try again.",
+      "notConfigured": "AI processing is not configured on the server.",
+      "startFailed": "Could not start processing. Try again.",
+      "alreadyConfirmed": "These items were already saved.",
+      "confirmFailed": "Could not save. Nothing was changed; try again."
+    },
+    "reviewTitle": "Review before saving",
+    "reviewHint": "Nothing is saved until you confirm. Edit, remove or keep each item.",
+    "clarifications": "Questions for you",
+    "noItems": "No actionable items were found.",
+    "keep": "Keep",
+    "inferred": "Interpreted by AI — not stated directly. Please check.",
+    "itemTitle": "Title",
+    "itemDescription": "Details",
+    "dueDate": "Due",
+    "remindAt": "Remind at",
+    "startsAt": "Starts",
+    "endsAt": "Ends",
+    "needDate": "Reminders and events need a date and time before they can be saved.",
+    "confirm": "Save {count, plural, one {# item} other {# items}}",
+    "confirmed": "Saved {count, plural, one {# item} other {# items}}. Pages to browse tasks and ideas arrive in the next update.",
+    "completedNote": "Reviewed and saved.",
+    "types": {
+      "task": "Task",
+      "idea": "Idea",
+      "note": "Note",
+      "shopping_list": "Shopping list",
+      "reminder": "Reminder",
+      "event": "Event",
+      "meeting_summary": "Meeting summary",
+      "important_information": "Important info",
+      "personal_thought": "Personal thought"
+    }
   }
 }

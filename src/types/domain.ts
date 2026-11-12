@@ -1,6 +1,8 @@
 // Timestamps are stored as Firestore Timestamps and exposed to the UI as ISO strings.
 export type ISODate = string;
 
+import type { AnalysisResult } from "@/lib/ai/schemas/analysis";
+
 export type ProcessingStatus =
   | "uploaded"
   | "validated"
@@ -28,6 +30,8 @@ export interface Recording {
   processingStatus: ProcessingStatus;
   transcriptionProvider: string | null;
   analysisProvider: string | null;
+  analysis: AnalysisResult | null; // AI output awaiting (or past) user review; separate from the transcript
+  processingError: string | null; // a short code, never a provider message
   createdAt: ISODate;
   updatedAt: ISODate;
 }

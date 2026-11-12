@@ -17,15 +17,36 @@ async function ownedRecording(uid: string, params: Ctx["params"]) {
   return recording;
 }
 
-const patchSchema = z.object({ title: z.string().trim().min(1).max(120) });
+// Editing the transcript never touches the original `transcript`; the edit lives in its own field.
+// `null` resets to the original.
+const patchSchema = z
+  .object({
+    title: z.string().trim().min(1).max(120).optional(),
+    editedTranscript: z.string().max(50_000).nullable().optional(),
+  })
+  .refine((v) => v.title !== undefined || v.editedTranscript !== undefined);
+
+export async function GET(_req: Request, { params }: Ctx) {
+  try {
+    const user = await requireSession({ strict: false });
+    return Response.json({ recording: await ownedRecording(user.uid, params) });
+  } catch (e) {
+    return errorResponse(e);
+  }
+}
 
 export async function PATCH(req: Request, { params }: Ctx) {
   try {
     guardOrigin(req);
     const user = await requireSession();
     const rec = await ownedRecording(user.uid, params);
-    const { title } = patchSchema.parse(await req.json().catch(() => null));
-    await recordingsCol(user.uid).doc(rec.id).update({ title, updatedAt: FieldValue.serverTimestamp() });
+    const { title, editedTranscript } = patchSchema.parse(await req.json().catch(() => null));
+    const update: Record<string, unknown> = { updatedAt: FieldValue.serverTimestamp() };
+    if (title !== undefined) update.title = title;
+    if (editedTranscript !== undefined) {
+      update.editedTranscript = editedTranscript === null || editedTranscript.trim() === "" ? null : editedTranscript;
+    }
+    await recordingsCol(user.uid).doc(rec.id).update(update);
     return Response.json({ ok: true });
   } catch (e) {
     return errorResponse(e);

@@ -175,5 +175,68 @@
       "completed": "Terminé",
       "failed": "Échec"
     }
+  },
+  "processing": {
+    "transcript": "Transcription",
+    "start": "Transcrire et analyser",
+    "retry": "Réessayer",
+    "noAudio": "L’audio a été supprimé : il n’y a rien à transcrire.",
+    "edit": "Modifier",
+    "saveEdit": "Enregistrer",
+    "cancel": "Annuler",
+    "editedNote": "Modifiée par vous. La transcription d’origine est conservée.",
+    "resetOriginal": "Restaurer l’original",
+    "transcriptSaved": "Transcription enregistrée. Utilisez « Analyser à nouveau » pour mettre à jour les résultats.",
+    "transcriptSaveFailed": "Impossible d’enregistrer la transcription. Réessayez.",
+    "reanalyze": "Analyser à nouveau",
+    "summary": "Résumé",
+    "running": {
+      "transcription_queued": "Démarrage…",
+      "transcribing": "Transcription en cours…",
+      "analysis_queued": "Démarrage de l’analyse…",
+      "analyzing": "Recherche des tâches, idées et rappels…"
+    },
+    "errors": {
+      "auth": "La clé du service d’IA a été refusée. Vérifiez la configuration du serveur.",
+      "billing": "Le service d’IA signale un problème de facturation.",
+      "quota": "Le quota du service d’IA est épuisé. Réessayez plus tard.",
+      "rate_limit": "Le service d’IA est saturé. Réessayez dans une minute.",
+      "unavailable": "Le service d’IA est indisponible. Réessayez.",
+      "invalid_input": "Le résultat n’a pas pu être validé. Réessayez ou modifiez d’abord la transcription.",
+      "no_speech": "Aucune parole détectée dans cet enregistrement.",
+      "audio_missing": "Le fichier audio est introuvable.",
+      "unknown": "Une erreur s’est produite. Réessayez.",
+      "notConfigured": "Le traitement IA n’est pas configuré sur le serveur.",
+      "startFailed": "Impossible de lancer le traitement. Réessayez.",
+      "alreadyConfirmed": "Ces éléments sont déjà enregistrés.",
+      "confirmFailed": "Enregistrement impossible. Rien n’a été modifié ; réessayez."
+    },
+    "reviewTitle": "Vérifier avant d’enregistrer",
+    "reviewHint": "Rien n’est enregistré tant que vous ne confirmez pas. Modifiez, retirez ou gardez chaque élément.",
+    "clarifications": "Questions pour vous",
+    "noItems": "Aucun élément à traiter n’a été trouvé.",
+    "keep": "Garder",
+    "inferred": "Interprété par l’IA — non dit explicitement. Vérifiez.",
+    "itemTitle": "Titre",
+    "itemDescription": "Détails",
+    "dueDate": "Échéance",
+    "remindAt": "Rappeler à",
+    "startsAt": "Début",
+    "endsAt": "Fin",
+    "needDate": "Les rappels et événements nécessitent une date et une heure avant d’être enregistrés.",
+    "confirm": "Enregistrer {count, plural, one {# élément} other {# éléments}}",
+    "confirmed": "{count, plural, one {# élément enregistré} other {# éléments enregistrés}}. Les pages pour consulter tâches et idées arrivent bientôt.",
+    "completedNote": "Vérifié et enregistré.",
+    "types": {
+      "task": "Tâche",
+      "idea": "Idée",
+      "note": "Note",
+      "shopping_list": "Liste de courses",
+      "reminder": "Rappel",
+      "event": "Événement",
+      "meeting_summary": "Résumé de réunion",
+      "important_information": "Info importante",
+      "personal_thought": "Pensée personnelle"
+    }
   }
 }

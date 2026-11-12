@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { LocalDate } from "@/components/ui/local-date";
 import { formatBytes, formatDuration } from "@/lib/format";
 import { revalidateRecordings } from "@/features/recordings/actions";
+import { ProcessingPanel } from "./processing-panel";
 import type { Recording } from "@/types/domain";
 
 type Pending = null | "rename" | "audio" | "all";
@@ -125,14 +126,7 @@ export function RecordingDetail({ recording }: { recording: Recording }) {
         </dl>
       </section>
 
-      <section className="glass rounded-2xl p-6">
-        <h2 className="mb-2 font-semibold">{t("transcript")}</h2>
-        {recording.transcript ? (
-          <p className="whitespace-pre-wrap">{recording.editedTranscript ?? recording.transcript}</p>
-        ) : (
-          <p className="text-sm text-muted-foreground">{t("notTranscribed")}</p>
-        )}
-      </section>
+      <ProcessingPanel recording={recording} />
 
       <section className="glass space-y-3 rounded-2xl p-6">
         {confirm === null ? (
