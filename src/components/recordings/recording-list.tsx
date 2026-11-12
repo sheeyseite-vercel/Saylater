@@ -12,7 +12,7 @@ export function RecordingList({ items }: { items: Recording[] }) {
         <li key={r.id}>
           <Link
             href={`/recordings/${r.id}`}
-            className="glass flex items-center gap-4 rounded-2xl p-4 transition hover:bg-muted"
+            className="glass card-hover flex items-center gap-4 rounded-2xl p-4"
           >
             <FileAudio className="h-8 w-8 shrink-0 text-primary" aria-hidden="true" />
             <div className="min-w-0 flex-1">

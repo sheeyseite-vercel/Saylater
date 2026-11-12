@@ -1,9 +1,13 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/firebase/session";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { AppNav } from "@/components/layout/app-nav";
+import { AppLockProvider } from "@/components/app-lock/app-lock-provider";
+import { LockButton } from "@/components/app-lock/lock-button";
+import { LOCK_COOKIE } from "@/features/app-lock/lock";
 import { LogoutButton } from "@/components/auth/logout-button";
 
 const Brand = () => (
@@ -14,16 +18,22 @@ const Brand = () => (
 
 const Controls = () => (
   <div className="flex items-center gap-2">
-    <LocaleSwitcher />
+    <div className="hidden sm:block">
+      <LocaleSwitcher />
+    </div>
     <ThemeToggle />
+    <LockButton />
     <LogoutButton />
   </div>
 );
 
 // Authoritative server-side check: the middleware only looks for the cookie.
 export default async function PrivateLayout({ children }: { children: React.ReactNode }) {
-  if (!(await getSessionUser())) redirect("/login");
+  const user = await getSessionUser();
+  if (!user) redirect("/login");
+  const initialLocked = (await cookies()).get(LOCK_COOKIE)?.value === "1";
   return (
+    <AppLockProvider uid={user.uid} initialLocked={initialLocked}>
     <div className="min-h-dvh md:flex">
       <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col justify-between border-e border-border p-4 md:flex">
         <div className="space-y-6">
@@ -45,5 +55,6 @@ export default async function PrivateLayout({ children }: { children: React.Reac
         <AppNav variant="bottom" />
       </div>
     </div>
+    </AppLockProvider>
   );
 }

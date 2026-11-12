@@ -77,7 +77,29 @@
     "autoDetect": "Auto-detect",
     "theme": "Theme",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "title": "Settings",
+    "appearance": "Appearance",
+    "security": "Security",
+    "account": "Account",
+    "font": "Font",
+    "fontHint": "Applies to the whole app and is remembered on this device.",
+    "sample": "SayLater — سجّل صوتك ونحن ننظّمه",
+    "fonts": {
+      "default": "Default (Inter + Plex Arabic)",
+      "cairo": "Cairo",
+      "tajawal": "Tajawal",
+      "naskh": "Serif (Lora + Naskh)",
+      "readable": "Hyperlegible (Atkinson)",
+      "system": "System font"
+    },
+    "textSize": "Text size",
+    "sizes": {
+      "sm": "Small",
+      "md": "Normal",
+      "lg": "Large",
+      "xl": "Extra large"
+    }
   },
   "dashboard": {
     "welcome": "Welcome, {name}",
@@ -238,5 +260,37 @@
       "important_information": "Important info",
       "personal_thought": "Personal thought"
     }
+  },
+  "lock": {
+    "title": "App lock",
+    "description": "Ask for a PIN when you open SayLater or return to it. The PIN stays on this device only.",
+    "note": "This is a privacy screen for this device, not encryption. Keep your phone's own lock on too.",
+    "on": "App lock is on",
+    "off": "App lock is off",
+    "enable": "Turn on app lock",
+    "turnOn": "Turn on",
+    "turnOff": "Turn off",
+    "cancel": "Cancel",
+    "setPin": "Choose a PIN ({min}–{max} digits)",
+    "confirmPin": "Repeat the PIN",
+    "currentPin": "Current PIN",
+    "invalidPin": "The PIN must be {min} to {max} digits.",
+    "mismatch": "The two PINs do not match.",
+    "autoLock": "Lock after leaving the app",
+    "timeouts": {
+      "0": "Immediately",
+      "60000": "After 1 minute",
+      "300000": "After 5 minutes",
+      "900000": "After 15 minutes"
+    },
+    "lockNow": "Lock now",
+    "locked": "SayLater is locked",
+    "enterPin": "Enter your PIN",
+    "unlock": "Unlock",
+    "wrongPin": "Wrong PIN",
+    "tooMany": "Too many attempts. Try again in {seconds} s.",
+    "forgot": "Forgot PIN?",
+    "forgotConfirm": "This removes the lock from this device and signs you out. You can sign in again with your account.",
+    "forgotYes": "Remove lock and sign out"
   }
 }

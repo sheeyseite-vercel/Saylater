@@ -77,7 +77,29 @@
     "autoDetect": "Détection automatique",
     "theme": "Thème",
     "dark": "Sombre",
-    "light": "Clair"
+    "light": "Clair",
+    "title": "Paramètres",
+    "appearance": "Apparence",
+    "security": "Sécurité",
+    "account": "Compte",
+    "font": "Police",
+    "fontHint": "S’applique à toute l’application et est mémorisée sur cet appareil.",
+    "sample": "SayLater — سجّل صوتك ونحن ننظّمه",
+    "fonts": {
+      "default": "Par défaut (Inter + Plex Arabic)",
+      "cairo": "Cairo",
+      "tajawal": "Tajawal",
+      "naskh": "Serif (Lora + Naskh)",
+      "readable": "Hyperlisible (Atkinson)",
+      "system": "Police système"
+    },
+    "textSize": "Taille du texte",
+    "sizes": {
+      "sm": "Petite",
+      "md": "Normale",
+      "lg": "Grande",
+      "xl": "Très grande"
+    }
   },
   "dashboard": {
     "welcome": "Bienvenue, {name}",
@@ -238,5 +260,37 @@
       "important_information": "Info importante",
       "personal_thought": "Pensée personnelle"
     }
+  },
+  "lock": {
+    "title": "Verrouillage de l’app",
+    "description": "Demande un code PIN à l’ouverture de SayLater ou au retour dans l’app. Le PIN reste uniquement sur cet appareil.",
+    "note": "C’est un écran de confidentialité pour cet appareil, pas un chiffrement. Gardez aussi le verrouillage de votre téléphone.",
+    "on": "Verrouillage activé",
+    "off": "Verrouillage désactivé",
+    "enable": "Activer le verrouillage",
+    "turnOn": "Activer",
+    "turnOff": "Désactiver",
+    "cancel": "Annuler",
+    "setPin": "Choisissez un PIN ({min} à {max} chiffres)",
+    "confirmPin": "Répétez le PIN",
+    "currentPin": "PIN actuel",
+    "invalidPin": "Le PIN doit contenir {min} à {max} chiffres.",
+    "mismatch": "Les deux PIN ne correspondent pas.",
+    "autoLock": "Verrouiller après avoir quitté l’app",
+    "timeouts": {
+      "0": "Immédiatement",
+      "60000": "Après 1 minute",
+      "300000": "Après 5 minutes",
+      "900000": "Après 15 minutes"
+    },
+    "lockNow": "Verrouiller",
+    "locked": "SayLater est verrouillé",
+    "enterPin": "Saisissez votre PIN",
+    "unlock": "Déverrouiller",
+    "wrongPin": "PIN incorrect",
+    "tooMany": "Trop de tentatives. Réessayez dans {seconds} s.",
+    "forgot": "PIN oublié ?",
+    "forgotConfirm": "Cela retire le verrouillage de cet appareil et vous déconnecte. Vous pourrez vous reconnecter avec votre compte.",
+    "forgotYes": "Retirer le verrouillage et se déconnecter"
   }
 }
