@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LocalDate } from "@/components/ui/local-date";
 import { formatBytes, formatDuration } from "@/lib/format";
+import { revalidateRecordings } from "@/features/recordings/actions";
 import type { Recording } from "@/types/domain";
 
 type Pending = null | "rename" | "audio" | "all";
@@ -34,6 +35,7 @@ export function RecordingDetail({ recording }: { recording: Recording }) {
     setBusy(null);
     if (res?.ok) {
       setMessage({ kind: "ok", key: "saved" });
+      await revalidateRecordings();
       router.refresh();
     } else {
       setMessage({ kind: "error", key: "saveFailed" });
@@ -49,6 +51,7 @@ export function RecordingDetail({ recording }: { recording: Recording }) {
     setBusy(null);
     setConfirm(null);
     if (!res?.ok) return setMessage({ kind: "error", key: "deleteFailed" });
+    await revalidateRecordings();
     if (audioOnly) {
       setMessage({ kind: "ok", key: "audioDeleted" });
       router.refresh();
@@ -148,8 +151,8 @@ export function RecordingDetail({ recording }: { recording: Recording }) {
             <p className="text-sm">{confirm === "audio" ? t("confirmAudio") : t("confirmAll")}</p>
             <div className="flex gap-2">
               <Button
-                className="w-auto bg-destructive"
-                style={{ backgroundImage: "none" }}
+                variant="danger"
+                className="w-auto"
                 disabled={busy !== null}
                 onClick={() => remove(confirm === "audio")}
               >

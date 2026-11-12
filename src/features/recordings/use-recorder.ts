@@ -14,6 +14,15 @@ export interface RecordedAudio {
   sessionId: string | null; // IndexedDB recovery session, if any
 }
 
+// Highest practical quality for voice: 256 kbps Opus/AAC (about 19 MB for the 10-minute limit).
+// The browser and device have the final say; Safari may ignore the bitrate hint.
+export const AUDIO_BITS_PER_SECOND = 256_000;
+
+export interface StartOptions {
+  /** Echo cancellation, noise suppression and gain control. Off by default for maximum fidelity. */
+  noiseReduction?: boolean;
+}
+
 /** Pick a container the current browser can actually record. Safari/iOS use MP4, Chromium/Firefox WebM/Ogg. */
 export function pickMimeType(): string | undefined {
   if (typeof MediaRecorder === "undefined") return undefined;
@@ -75,7 +84,7 @@ export function useRecorder() {
     rec.stop();
   }, []);
 
-  const start = useCallback(async () => {
+  const start = useCallback(async (opts: StartOptions = {}) => {
     setErrorKey(null);
     setResult(null);
     setElapsedMs(0);
@@ -86,8 +95,16 @@ export function useRecorder() {
 
     let media: MediaStream;
     try {
+      // "ideal" values are requests, not requirements, so devices that cannot meet them still work.
       media = await navigator.mediaDevices.getUserMedia({
-        audio: { echoCancellation: true, noiseSuppression: true },
+        audio: {
+          sampleRate: { ideal: 48000 },
+          sampleSize: { ideal: 24 },
+          channelCount: { ideal: 2 },
+          echoCancellation: Boolean(opts.noiseReduction),
+          noiseSuppression: Boolean(opts.noiseReduction),
+          autoGainControl: true,
+        },
       });
     } catch (e) {
       const name = (e as DOMException)?.name;
@@ -99,7 +116,10 @@ export function useRecorder() {
     try {
       stream.current = media;
       const picked = pickMimeType();
-      const rec = new MediaRecorder(media, picked ? { mimeType: picked } : undefined);
+      const rec = new MediaRecorder(media, {
+        ...(picked ? { mimeType: picked } : {}),
+        audioBitsPerSecond: AUDIO_BITS_PER_SECOND,
+      });
       recorder.current = rec;
       mime.current = rec.mimeType || picked || "audio/webm";
 

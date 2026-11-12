@@ -34,7 +34,12 @@
     --success: 152 55% 50%;
   }
   * { @apply border-border; }
-  body { @apply bg-background text-foreground antialiased; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* soft brand glow at the top of every screen */
+    background-image: radial-gradient(70rem 30rem at 50% -14rem, hsl(var(--primary) / 0.16), transparent 70%);
+    background-repeat: no-repeat;
+  }
   [dir="rtl"] body { font-family: var(--font-arabic), system-ui, sans-serif; }
   :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }
 }

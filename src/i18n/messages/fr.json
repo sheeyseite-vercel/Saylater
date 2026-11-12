@@ -130,7 +130,9 @@
       "uploadFailed": "L'envoi a échoué. Votre enregistrement est toujours là. Vérifiez votre connexion et réessayez.",
       "quota": "Vous avez atteint la limite d'enregistrements de votre offre.",
       "notAuthorized": "Votre session a expiré. Reconnectez-vous ; votre enregistrement est conservé sur cet appareil."
-    }
+    },
+    "noiseReduction": "Réduction du bruit",
+    "noiseReductionHint": "Atténue le bruit de fond mais réduit la fidélité. Désactivée par défaut pour la meilleure qualité."
   },
   "recordings": {
     "title": "Enregistrements",

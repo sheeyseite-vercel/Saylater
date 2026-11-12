@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 /** Streams the caller's own audio. Files live in a private store and are never exposed by URL. */
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const user = await requireSession();
+    const user = await requireSession({ strict: false });
     const { id } = await params;
     if (!isUuid(id)) throw new HttpError(404, "Not found");
 

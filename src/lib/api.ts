@@ -1,7 +1,7 @@
 import "server-only";
 import { ZodError } from "zod";
 import { AuthError } from "@/lib/firebase/verify-request";
-import { getSessionUser, type SessionUser } from "@/lib/firebase/session";
+import { getSessionUser, getVerifiedSessionUser, type SessionUser } from "@/lib/firebase/session";
 
 export class HttpError extends Error {
   constructor(public status: number, message: string) {
@@ -10,8 +10,9 @@ export class HttpError extends Error {
 }
 
 /** Identity always comes from the verified session cookie, never from the request body. */
-export async function requireSession(): Promise<SessionUser> {
-  const user = await getSessionUser();
+export async function requireSession(opts: { strict?: boolean } = {}): Promise<SessionUser> {
+  // Strict (revocation-checked) by default; read-only hot paths opt out for speed.
+  const user = await (opts.strict === false ? getSessionUser() : getVerifiedSessionUser());
   if (!user) throw new AuthError(401, "Not authenticated");
   return user;
 }

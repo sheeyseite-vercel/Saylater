@@ -14,6 +14,11 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    // Keep visited pages in the client router cache so going back or revisiting is instant.
+    // Mutations call revalidateRecordings() so lists never show stale data after a change.
+    staleTimes: { dynamic: 30, static: 180 },
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

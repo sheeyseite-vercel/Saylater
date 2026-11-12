@@ -17,6 +17,7 @@ import {
   type LocalSession,
 } from "@/features/recordings/local-store";
 import { formatClock, formatDuration } from "@/lib/format";
+import { revalidateRecordings } from "@/features/recordings/actions";
 
 type Lang = "auto" | "ar" | "fr" | "en";
 
@@ -28,6 +29,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
 
   const [title, setTitle] = useState("");
   const [lang, setLang] = useState<Lang>("auto");
+  const [noiseReduction, setNoiseReduction] = useState(false); // off = highest fidelity
   const [progress, setProgress] = useState<number | null>(null);
   const [uploading, setUploading] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -118,6 +120,7 @@ export function RecorderPanel({ uid }: { uid: string }) {
       });
       setSaved(true);
       if (audio.sessionId) await deleteSession(audio.sessionId); // only after the server confirmed
+      await revalidateRecordings(); // so the list and dashboard show it immediately
       router.push(`/recordings/${id}`);
     } catch (e) {
       // Keep the audio (and its local copy) so the user can retry.
@@ -160,7 +163,10 @@ export function RecorderPanel({ uid }: { uid: string }) {
           <p className="text-4xl font-semibold tabular-nums" aria-live="off" dir="ltr">
             {formatClock(rec.elapsedMs)}
           </p>
-          <p className="text-sm text-muted-foreground" role="status">
+          <p className="flex items-center justify-center gap-2 text-sm text-muted-foreground" role="status">
+            {status === "recording" && (
+              <span aria-hidden="true" className="h-2.5 w-2.5 animate-pulse rounded-full bg-destructive" />
+            )}
             {status === "recording" && t("recording")}
             {status === "paused" && t("paused")}
             {status === "requesting" && t("requesting")}
@@ -171,10 +177,10 @@ export function RecorderPanel({ uid }: { uid: string }) {
             {(status === "idle" || status === "error" || status === "requesting") && (
               <button
                 type="button"
-                onClick={rec.start}
+                onClick={() => void rec.start({ noiseReduction })}
                 disabled={status === "requesting"}
                 aria-label={t("start")}
-                className="brand-gradient flex h-24 w-24 items-center justify-center rounded-full text-primary-foreground shadow-xl transition hover:scale-105 disabled:opacity-60"
+                className="brand-gradient flex h-24 w-24 items-center justify-center rounded-full text-primary-foreground shadow-[0_0_50px_-8px_hsl(var(--primary)/0.7)] transition active:scale-95 disabled:opacity-60"
               >
                 <Mic className="h-10 w-10" />
               </button>
@@ -209,6 +215,21 @@ export function RecorderPanel({ uid }: { uid: string }) {
               </>
             )}
           </div>
+
+          {!busy && (
+            <label className="mx-auto flex max-w-sm cursor-pointer items-start gap-3 text-start text-sm">
+              <input
+                type="checkbox"
+                checked={noiseReduction}
+                onChange={(e) => setNoiseReduction(e.target.checked)}
+                className="mt-1 h-4 w-4 accent-[hsl(var(--primary))]"
+              />
+              <span>
+                <span className="font-medium">{t("noiseReduction")}</span>
+                <span className="block text-xs text-muted-foreground">{t("noiseReductionHint")}</span>
+              </span>
+            </label>
+          )}
 
           {!busy && (
             <div className="border-t border-border pt-4">

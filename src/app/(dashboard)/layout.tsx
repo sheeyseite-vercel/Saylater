@@ -33,15 +33,15 @@ export default async function PrivateLayout({ children }: { children: React.Reac
         <Controls />
       </aside>
 
-      <div className="min-w-0 flex-1 pb-24 md:pb-0">
-        <header className="flex items-center justify-between border-b border-border px-4 py-3 md:hidden">
+      <div className="min-w-0 flex-1 pb-28 md:pb-0">
+        <header className="sticky top-0 z-20 flex items-center justify-between gap-2 border-b border-border bg-background/80 px-4 py-2.5 backdrop-blur md:hidden">
           <Brand />
           <Controls />
         </header>
         {children}
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/90 backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/90 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur md:hidden">
         <AppNav variant="bottom" />
       </div>
     </div>

@@ -25,7 +25,7 @@ export function LocaleSwitcher() {
           router.refresh();
         })
       }
-      className="h-9 rounded-lg border border-border bg-card px-2 text-sm"
+      className="h-9 max-w-[7.5rem] rounded-lg border border-border bg-card px-2 text-sm"
     >
       {locales.map((l) => (
         <option key={l} value={l}>

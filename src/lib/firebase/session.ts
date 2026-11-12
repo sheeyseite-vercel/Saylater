@@ -11,24 +11,30 @@ export interface SessionUser {
   emailVerified: boolean;
 }
 
+const build = (checkRevoked: boolean) =>
+  cache(async (): Promise<SessionUser | null> => {
+    if (!isAdminConfigured()) return null;
+    const value = (await cookies()).get(SESSION_COOKIE)?.value;
+    if (!value) return null;
+    try {
+      const d = await adminAuth().verifySessionCookie(value, checkRevoked);
+      return {
+        uid: d.uid,
+        email: d.email ?? null,
+        name: typeof d.name === "string" ? d.name : null,
+        emailVerified: Boolean(d.email_verified),
+      };
+    } catch {
+      return null;
+    }
+  });
+
 /**
- * Verified identity from the httpOnly session cookie (revocation is checked).
- * Returns null when signed out, when the cookie is invalid, or when Firebase Admin
- * is not configured. Never trust a user id from anywhere else.
+ * Fast path for rendering pages: verifies the cookie's signature and expiry locally, with no
+ * network round trip. A session revoked elsewhere stays valid for rendering until the cookie
+ * expires (5 days), but every mutation uses the strict path below.
  */
-export const getSessionUser = cache(async (): Promise<SessionUser | null> => {
-  if (!isAdminConfigured()) return null;
-  const value = (await cookies()).get(SESSION_COOKIE)?.value;
-  if (!value) return null;
-  try {
-    const d = await adminAuth().verifySessionCookie(value, true);
-    return {
-      uid: d.uid,
-      email: d.email ?? null,
-      name: typeof d.name === "string" ? d.name : null,
-      emailVerified: Boolean(d.email_verified),
-    };
-  } catch {
-    return null;
-  }
-});
+export const getSessionUser = build(false);
+
+/** Strict path for mutations: also asks Firebase whether the session has been revoked. */
+export const getVerifiedSessionUser = build(true);

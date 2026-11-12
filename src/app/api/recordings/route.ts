@@ -23,7 +23,7 @@ const createSchema = z.object({
 
 export async function GET(req: Request) {
   try {
-    const user = await requireSession();
+    const user = await requireSession({ strict: false });
     const url = new URL(req.url);
     const limit = Number(url.searchParams.get("limit") ?? 20);
     const data = await listRecordings(user.uid, {

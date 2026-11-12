@@ -3,17 +3,19 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { LogOut } from "lucide-react";
 import { logout } from "@/features/auth/actions";
 
+// Icon-only on phones (text used to wrap and clip in the header), icon + label from tablet up.
 export function LogoutButton() {
   const t = useTranslations("auth");
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   return (
-    <Button
-      variant="ghost"
-      className="h-9 w-auto"
+    <button
+      type="button"
+      aria-label={t("logout")}
+      title={t("logout")}
       disabled={busy}
       onClick={async () => {
         setBusy(true);
@@ -21,8 +23,10 @@ export function LogoutButton() {
         router.replace("/login");
         router.refresh();
       }}
+      className="flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border border-border bg-card px-2.5 text-sm transition hover:bg-muted disabled:opacity-60"
     >
-      {t("logout")}
-    </Button>
+      <LogOut className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
+      <span className="hidden md:inline">{t("logout")}</span>
+    </button>
   );
 }

@@ -20,7 +20,7 @@ export function AppNav({ variant }: { variant: "sidebar" | "bottom" }) {
   return (
     <nav
       aria-label={t("main")}
-      className={cn(variant === "sidebar" ? "flex flex-col gap-1" : "grid grid-cols-3")}
+      className={cn(variant === "sidebar" ? "flex flex-col gap-1" : "grid grid-cols-3 gap-1")}
     >
       {ITEMS.map(({ href, key, Icon }) => {
         const active = pathname === href || pathname.startsWith(href + "/");

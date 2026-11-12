@@ -130,7 +130,9 @@
       "uploadFailed": "The upload failed. Your recording is still here. Check your connection and try again.",
       "quota": "You reached the recording limit for your plan.",
       "notAuthorized": "Your session expired. Log in again; your recording is kept on this device."
-    }
+    },
+    "noiseReduction": "Noise reduction",
+    "noiseReductionHint": "Reduces background noise but lowers fidelity. Off by default for the highest quality."
   },
   "recordings": {
     "title": "Recordings",
