@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { LogOut } from "lucide-react";
 import { logout } from "@/features/auth/actions";
+import { clearPrivateCaches } from "@/features/offline/db";
 
 // Icon-only on phones (text used to wrap and clip in the header), icon + label from tablet up.
 export function LogoutButton() {
@@ -20,6 +21,7 @@ export function LogoutButton() {
       onClick={async () => {
         setBusy(true);
         await logout();
+        await clearPrivateCaches();
         router.replace("/login");
         router.refresh();
       }}

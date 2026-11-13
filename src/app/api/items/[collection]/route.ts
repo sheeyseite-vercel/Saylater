@@ -13,9 +13,17 @@ export async function POST(req: Request, { params }: Ctx) {
     const user = await requireSession();
     const { collection } = await params;
     if (!isCollection(collection)) throw new HttpError(404, "Not found");
-    const data = createSchemas[collection].parse(await req.json().catch(() => null)) as Record<string, unknown>;
+    const body = (await req.json().catch(() => null)) as Record<string, unknown> | null;
+    // Clients may supply the id so an offline-created item and its later sync are the same document.
+    const { id: clientId, ...fields } = body ?? {};
+    const data = createSchemas[collection].parse(fields) as Record<string, unknown>;
+    const wantedId = typeof clientId === "string" && /^[0-9a-f-]{36}$/i.test(clientId) ? clientId : null;
 
-    const ref = itemsCol(user.uid, collection).doc();
+    const ref = wantedId ? itemsCol(user.uid, collection).doc(wantedId) : itemsCol(user.uid, collection).doc();
+    if (wantedId) {
+      const existing = await ref.get();
+      if (existing.exists) return Response.json({ item: serialize(existing) }, { status: 200 }); // a retry: already saved
+    }
     await ref.set({
       ...toStored(collection, data),
       userId: user.uid,

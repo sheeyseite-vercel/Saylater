@@ -446,5 +446,16 @@
     "checkWorker": "Offline support is ready",
     "checkPrompt": "The browser is offering installation",
     "tip": "Chrome decides when to offer installation. Reload this page once, wait a few seconds, and check again. If you removed the app before, clear this site's data in Chrome (Site settings) and reload."
+  },
+  "offline": {
+    "offline": "Offline — changes are saved on this device",
+    "offlinePending": "{count} waiting to sync",
+    "syncing": "Syncing…",
+    "pendingTitle": "Waiting to upload",
+    "waiting": "Will upload when you're back online",
+    "quota": "Not enough storage on this device to save the recording",
+    "remove": "Remove",
+    "confirmDelete": "Delete this recording from the device?",
+    "retryNow": "Retry now"
   }
 }

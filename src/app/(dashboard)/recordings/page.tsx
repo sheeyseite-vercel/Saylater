@@ -6,6 +6,7 @@ import { Mic } from "lucide-react";
 import { getSessionUser } from "@/lib/firebase/session";
 import { listRecordings } from "@/features/recordings/server";
 import { RecordingList } from "@/components/recordings/recording-list";
+import { PendingUploads } from "@/components/offline/pending-uploads";
 import { LibraryTabs } from "@/components/library/library-tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -65,6 +66,7 @@ export default async function RecordingsPage({
       </div>
 
       <LibraryTabs />
+      <PendingUploads />
 
       <Suspense
         key={after ?? "first"}

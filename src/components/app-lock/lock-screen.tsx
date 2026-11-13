@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { logout } from "@/features/auth/actions";
+import { clearPrivateCaches } from "@/features/offline/db";
 import { PIN_MAX, PIN_MIN, readLock, removeLock, verifyPin } from "@/features/app-lock/lock";
 
 export function LockScreen({ uid, onUnlock }: { uid: string; onUnlock: () => void }) {
@@ -89,6 +90,7 @@ export function LockScreen({ uid, onUnlock }: { uid: string; onUnlock: () => voi
             onClick={async () => {
               removeLock(uid);
               await logout();
+              await clearPrivateCaches();
               router.replace("/login");
               router.refresh();
             }}

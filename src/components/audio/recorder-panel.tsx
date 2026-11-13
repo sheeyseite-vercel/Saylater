@@ -18,6 +18,7 @@ import {
 } from "@/features/recordings/local-store";
 import { formatClock, formatDuration } from "@/lib/format";
 import { revalidateRecordings } from "@/features/recordings/actions";
+import { enqueueRecording } from "@/features/offline/db";
 
 type Lang = "auto" | "ar" | "fr" | "en";
 
@@ -107,6 +108,29 @@ export function RecorderPanel({ uid }: { uid: string }) {
     setUploading(true);
     setErrorKey(null);
     setProgress(0);
+
+    // No connection: keep the audio on this device; it uploads and is transcribed automatically later.
+    if (!navigator.onLine) {
+      try {
+        await enqueueRecording({
+          id: attemptId.current,
+          uid,
+          blob: audio.blob,
+          mimeType: audio.mimeType,
+          title: title.trim() || t("untitled"),
+          durationSeconds: audio.durationSeconds,
+          language: lang === "auto" ? null : lang,
+          createdAt: Date.now(),
+        });
+        setSaved(true);
+        if (audio.sessionId) await deleteSession(audio.sessionId);
+        router.push("/recordings");
+      } catch {
+        setErrorKey("uploadFailed");
+        setUploading(false);
+      }
+      return;
+    }
     try {
       const id = await uploadRecording({
         uid,

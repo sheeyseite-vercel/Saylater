@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/firebase/session";
 import { AppNav } from "@/components/layout/app-nav";
 import { RecButton } from "@/components/layout/rec-button";
+import { SyncProvider } from "@/components/offline/sync-provider";
 import { AppLockProvider } from "@/components/app-lock/app-lock-provider";
 import { LOCK_COOKIE } from "@/features/app-lock/lock";
 
@@ -24,6 +25,7 @@ export default async function PrivateLayout({ children }: { children: React.Reac
   const initialLocked = (await cookies()).get(LOCK_COOKIE)?.value === "1";
   return (
     <AppLockProvider uid={user.uid} initialLocked={initialLocked}>
+    <SyncProvider uid={user.uid}>
     <div className="min-h-dvh md:flex">
       <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col justify-between border-e border-border p-5 md:flex">
         <div className="space-y-8">
@@ -48,6 +50,7 @@ export default async function PrivateLayout({ children }: { children: React.Reac
         <AppNav variant="bottom" />
       </div>
     </div>
+    </SyncProvider>
     </AppLockProvider>
   );
 }
