@@ -66,7 +66,16 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       if (snap.get("processingStatus") !== "awaiting_review") throw new HttpError(409, "Already confirmed");
       const run = String(snap.get("analysisRunId") ?? id);
       docs.forEach((d, i) => {
-        tx.create(db.collection(`users/${user.uid}/${d.col}`).doc(`${run}_${i}`), d.data);
+        const docId = `${run}_${i}`;
+        tx.create(db.collection(`users/${user.uid}/${d.col}`).doc(docId), d.data);
+        if (d.col === "reminders") {
+          tx.set(db.doc(`reminderQueue/${user.uid}_${docId}`), {
+            uid: user.uid,
+            reminderId: docId,
+            remindAt: d.data.remindAt,
+            title: d.data.title,
+          });
+        }
       });
       tx.update(ref, {
         processingStatus: "completed",

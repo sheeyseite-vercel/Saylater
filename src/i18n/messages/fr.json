@@ -26,7 +26,9 @@
     "insights": "Statistiques",
     "settings": "Paramètres",
     "billing": "Abonnement",
-    "main": "Navigation principale"
+    "main": "Navigation principale",
+    "library": "Bibliothèque",
+    "notes": "Notes"
   },
   "landing": {
     "headline": "Dites-le. On l'organise.",
@@ -125,7 +127,8 @@
     "totalRecordings": "Enregistrements au total",
     "recent": "Enregistrements récents",
     "viewAll": "Tout voir",
-    "noRecordings": "Aucun enregistrement pour l'instant. Touchez Enregistrement rapide pour créer le premier."
+    "noRecordings": "Aucun enregistrement pour l'instant. Touchez Enregistrement rapide pour créer le premier.",
+    "openTasks": "tâches ouvertes"
   },
   "capture": {
     "title": "Enregistrer",
@@ -306,5 +309,123 @@
     "forgot": "PIN oublié ?",
     "forgotConfirm": "Cela retire le verrouillage de cet appareil et vous déconnecte. Vous pourrez vous reconnecter avec votre compte.",
     "forgotYes": "Retirer le verrouillage et se déconnecter"
+  },
+  "tasks": {
+    "title": "Tâches",
+    "addPlaceholder": "Ajouter une tâche",
+    "add": "Ajouter",
+    "empty": "Aucune tâche ouverte. Ajoutez-en une ou enregistrez une note.",
+    "completed": "Terminées ({count})",
+    "overdue": "En retard",
+    "due": "Échéance",
+    "priorityLabel": "Priorité",
+    "priority": {
+      "low": "Basse",
+      "medium": "Moyenne",
+      "high": "Haute"
+    },
+    "titleLabel": "Titre",
+    "details": "Détails",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer cette tâche ?",
+    "error": "Enregistrement impossible. Votre modification a été annulée ; réessayez."
+  },
+  "ideas": {
+    "title": "Idées",
+    "addPlaceholder": "Ajouter une idée",
+    "add": "Ajouter",
+    "empty": "Aucune idée pour l’instant.",
+    "favorite": "Favori",
+    "onlyFavorites": "Favoris uniquement",
+    "titleLabel": "Titre",
+    "details": "Détails",
+    "tags": "Étiquettes",
+    "tagsHint": "Étiquettes séparées par des virgules",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer cette idée ?",
+    "error": "Enregistrement impossible. Votre modification a été annulée ; réessayez."
+  },
+  "lists": {
+    "title": "Listes",
+    "addPlaceholder": "Nom de la nouvelle liste",
+    "add": "Créer la liste",
+    "empty": "Aucune liste pour l’instant.",
+    "addItemPlaceholder": "Ajouter un élément",
+    "addItem": "Ajouter",
+    "removeItem": "Retirer l’élément",
+    "clearDone": "Retirer les cochés",
+    "delete": "Supprimer la liste",
+    "confirmDelete": "Supprimer cette liste ?",
+    "error": "Enregistrement impossible. Votre modification a été annulée ; réessayez."
+  },
+  "notes": {
+    "title": "Notes",
+    "addPlaceholder": "Titre de la note",
+    "add": "Ajouter",
+    "empty": "Aucune note pour l’instant.",
+    "titleLabel": "Titre",
+    "body": "Note",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer cette note ?",
+    "error": "Enregistrement impossible. Votre modification a été annulée ; réessayez."
+  },
+  "calendar": {
+    "title": "Calendrier",
+    "addReminder": "Ajouter un rappel",
+    "addEvent": "Ajouter un événement",
+    "titleLabel": "Titre",
+    "remindAt": "Rappeler à",
+    "starts": "Début",
+    "ends": "Fin",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "needFields": "Saisissez un titre, une date et une heure.",
+    "overdue": "En retard",
+    "today": "Aujourd’hui",
+    "empty": "Rien de prévu. Ajoutez un rappel ou un événement, ou dites-le dans un enregistrement.",
+    "sent": "envoyé",
+    "markDone": "Marquer comme fait",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer cet élément ?",
+    "showPast": "Afficher les précédents ({count})",
+    "hidePast": "Masquer les précédents",
+    "kinds": {
+      "reminder": "Rappel",
+      "event": "Événement",
+      "task": "Tâche"
+    },
+    "error": "Enregistrement impossible. Votre modification a été annulée ; réessayez."
+  },
+  "search": {
+    "title": "Recherche",
+    "placeholder": "Rechercher enregistrements, tâches, idées…",
+    "hint": "Saisissez au moins 2 caractères.",
+    "searching": "Recherche…",
+    "none": "Aucun résultat.",
+    "error": "La recherche a échoué. Réessayez.",
+    "kinds": {
+      "recording": "Enregistrement",
+      "task": "Tâche",
+      "idea": "Idée",
+      "list": "Liste",
+      "note": "Note",
+      "reminder": "Rappel",
+      "event": "Événement"
+    }
+  },
+  "notifications": {
+    "title": "Notifications de rappel",
+    "description": "Recevez une notification sur cet appareil à l’heure d’un rappel.",
+    "enable": "Activer les notifications",
+    "disable": "Désactiver",
+    "on": "Notifications activées sur cet appareil",
+    "test": "Envoyer un test",
+    "testSent": "Test envoyé. Il devrait apparaître dans un instant.",
+    "testFailed": "Le test n’a pas pu être livré.",
+    "enableFailed": "Impossible d’activer les notifications. Réessayez.",
+    "disableFailed": "Impossible de désactiver les notifications.",
+    "unsupported": "Ce navigateur ne gère pas les notifications. Sur iPhone, ajoutez d’abord SayLater à l’écran d’accueil.",
+    "denied": "Les notifications sont bloquées pour ce site. Autorisez-les dans les réglages du navigateur, puis revenez.",
+    "note": "L’heure de livraison dépend du calendrier d’exécution des rappels sur le serveur."
   }
 }

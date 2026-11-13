@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Search } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/firebase/session";
@@ -18,6 +20,7 @@ const Brand = () => (
 export default async function PrivateLayout({ children }: { children: React.ReactNode }) {
   const user = await getSessionUser();
   if (!user) redirect("/login");
+  const searchLabel = (await getTranslations("nav"))("search");
   const initialLocked = (await cookies()).get(LOCK_COOKIE)?.value === "1";
   return (
     <AppLockProvider uid={user.uid} initialLocked={initialLocked}>
@@ -31,8 +34,11 @@ export default async function PrivateLayout({ children }: { children: React.Reac
       </aside>
 
       <div className="min-w-0 flex-1 pb-28 md:pb-0">
-        <header className="px-4 pt-4 md:hidden">
+        <header className="flex items-center justify-between px-4 pt-4 md:hidden">
           <Brand />
+          <Link href="/search" aria-label={searchLabel} className="rounded-lg p-2 text-muted-foreground hover:bg-muted">
+            <Search className="h-5 w-5" aria-hidden="true" />
+          </Link>
         </header>
         {children}
       </div>

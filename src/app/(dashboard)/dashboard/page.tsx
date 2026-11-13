@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Mic } from "lucide-react";
 import { getSessionUser } from "@/lib/firebase/session";
+import { itemsCol } from "@/features/items/server";
 import { countRecordings, listRecordings } from "@/features/recordings/server";
 import { RecordingList } from "@/components/recordings/recording-list";
 import { ResendVerification } from "@/components/auth/resend-verification";
@@ -11,13 +12,23 @@ import { Skeleton } from "@/components/ui/skeleton";
 // Real data only: nothing is shown for features that do not exist yet.
 async function DashboardData({ uid }: { uid: string }) {
   const t = await getTranslations("dashboard");
-  const [total, recent] = await Promise.all([countRecordings(uid), listRecordings(uid, { limit: 5 })]);
+  const [total, recent, openTasks] = await Promise.all([
+    countRecordings(uid),
+    listRecordings(uid, { limit: 5 }),
+    itemsCol(uid, "tasks").where("status", "==", "pending").count().get().then((s) => s.data().count),
+  ]);
   return (
     <>
-      <p className="flex items-baseline gap-3">
-        <span className="text-6xl font-semibold tabular-nums leading-none">{total}</span>
-        <span className="text-muted-foreground">{t("totalRecordings")}</span>
-      </p>
+      <div className="flex flex-wrap items-end gap-x-10 gap-y-4">
+        <p className="flex items-baseline gap-3">
+          <span className="text-5xl font-semibold tabular-nums leading-none">{total}</span>
+          <span className="text-muted-foreground">{t("totalRecordings")}</span>
+        </p>
+        <Link href="/tasks" className="flex items-baseline gap-3">
+          <span className="text-5xl font-semibold tabular-nums leading-none">{openTasks}</span>
+          <span className="text-muted-foreground">{t("openTasks")}</span>
+        </Link>
+      </div>
 
       <section className="space-y-2">
         <div className="flex items-center justify-between">

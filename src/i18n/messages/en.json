@@ -26,7 +26,9 @@
     "insights": "Insights",
     "settings": "Settings",
     "billing": "Billing",
-    "main": "Main navigation"
+    "main": "Main navigation",
+    "library": "Library",
+    "notes": "Notes"
   },
   "landing": {
     "headline": "Speak it. We'll organize it.",
@@ -125,7 +127,8 @@
     "totalRecordings": "Total recordings",
     "recent": "Recent recordings",
     "viewAll": "View all",
-    "noRecordings": "No recordings yet. Tap Quick record to make your first one."
+    "noRecordings": "No recordings yet. Tap Quick record to make your first one.",
+    "openTasks": "open tasks"
   },
   "capture": {
     "title": "Capture",
@@ -306,5 +309,123 @@
     "forgot": "Forgot PIN?",
     "forgotConfirm": "This removes the lock from this device and signs you out. You can sign in again with your account.",
     "forgotYes": "Remove lock and sign out"
+  },
+  "tasks": {
+    "title": "Tasks",
+    "addPlaceholder": "Add a task",
+    "add": "Add task",
+    "empty": "No open tasks. Add one above, or record a note.",
+    "completed": "Completed ({count})",
+    "overdue": "Overdue",
+    "due": "Due",
+    "priorityLabel": "Priority",
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "titleLabel": "Title",
+    "details": "Details",
+    "delete": "Delete",
+    "confirmDelete": "Delete this task?",
+    "error": "Could not save. Your change was undone; try again."
+  },
+  "ideas": {
+    "title": "Ideas",
+    "addPlaceholder": "Add an idea",
+    "add": "Add idea",
+    "empty": "No ideas yet.",
+    "favorite": "Favorite",
+    "onlyFavorites": "Only favorites",
+    "titleLabel": "Title",
+    "details": "Details",
+    "tags": "Tags",
+    "tagsHint": "Tags, separated by commas",
+    "delete": "Delete",
+    "confirmDelete": "Delete this idea?",
+    "error": "Could not save. Your change was undone; try again."
+  },
+  "lists": {
+    "title": "Lists",
+    "addPlaceholder": "New list name",
+    "add": "Create list",
+    "empty": "No lists yet.",
+    "addItemPlaceholder": "Add an item",
+    "addItem": "Add item",
+    "removeItem": "Remove item",
+    "clearDone": "Clear checked",
+    "delete": "Delete list",
+    "confirmDelete": "Delete this list?",
+    "error": "Could not save. Your change was undone; try again."
+  },
+  "notes": {
+    "title": "Notes",
+    "addPlaceholder": "Add a note title",
+    "add": "Add note",
+    "empty": "No notes yet.",
+    "titleLabel": "Title",
+    "body": "Note",
+    "delete": "Delete",
+    "confirmDelete": "Delete this note?",
+    "error": "Could not save. Your change was undone; try again."
+  },
+  "calendar": {
+    "title": "Calendar",
+    "addReminder": "Add reminder",
+    "addEvent": "Add event",
+    "titleLabel": "Title",
+    "remindAt": "Remind at",
+    "starts": "Starts",
+    "ends": "Ends",
+    "save": "Save",
+    "cancel": "Cancel",
+    "needFields": "Enter a title and a date and time.",
+    "overdue": "Overdue",
+    "today": "Today",
+    "empty": "Nothing scheduled. Add a reminder or event, or say it in a recording.",
+    "sent": "sent",
+    "markDone": "Mark done",
+    "delete": "Delete",
+    "confirmDelete": "Delete this item?",
+    "showPast": "Show earlier ({count})",
+    "hidePast": "Hide earlier",
+    "kinds": {
+      "reminder": "Reminder",
+      "event": "Event",
+      "task": "Task"
+    },
+    "error": "Could not save. Your change was undone; try again."
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search recordings, tasks, ideas…",
+    "hint": "Type at least 2 characters.",
+    "searching": "Searching…",
+    "none": "No results.",
+    "error": "Search failed. Try again.",
+    "kinds": {
+      "recording": "Recording",
+      "task": "Task",
+      "idea": "Idea",
+      "list": "List",
+      "note": "Note",
+      "reminder": "Reminder",
+      "event": "Event"
+    }
+  },
+  "notifications": {
+    "title": "Reminder notifications",
+    "description": "Get a notification on this device when a reminder is due.",
+    "enable": "Turn on notifications",
+    "disable": "Turn off",
+    "on": "Notifications are on for this device",
+    "test": "Send a test",
+    "testSent": "Test sent. It should appear in a moment.",
+    "testFailed": "The test could not be delivered.",
+    "enableFailed": "Could not turn on notifications. Try again.",
+    "disableFailed": "Could not turn off notifications.",
+    "unsupported": "This browser does not support notifications. On iPhone, add SayLater to the Home Screen first.",
+    "denied": "Notifications are blocked for this site. Allow them in your browser's site settings, then come back.",
+    "note": "Delivery time depends on the server's reminder schedule."
   }
 }
