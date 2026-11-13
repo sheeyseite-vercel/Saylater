@@ -17,6 +17,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  maximumScale: 1,
+  userScalable: false, // zoom is disabled in-app; the text-size setting replaces it
   viewportFit: "cover", // lets the bottom bar respect phone safe areas
   themeColor: [
     { media: "(prefers-color-scheme: dark)", color: "#0e1118" },

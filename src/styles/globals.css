@@ -43,7 +43,7 @@
   html[data-accent="graphite"] { --primary: 222 20% 20%; --ring: 222 20% 30%; --accent: 222 20% 20%; }
   html[data-accent="graphite"].dark { --primary: 220 15% 88%; --primary-foreground: 222 30% 10%; --ring: 220 15% 80%; --accent: 220 15% 88%; }
   * { @apply border-border; }
-  html { font-size: 16px; }
+  html { font-size: 16px; touch-action: manipulation; -webkit-text-size-adjust: 100%; }
   html[data-size="sm"] { font-size: 14.5px; }
   html[data-size="lg"] { font-size: 18px; }
   html[data-size="xl"] { font-size: 20px; }

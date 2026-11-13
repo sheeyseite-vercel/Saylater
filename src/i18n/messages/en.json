@@ -427,5 +427,24 @@
     "unsupported": "This browser does not support notifications. On iPhone, add SayLater to the Home Screen first.",
     "denied": "Notifications are blocked for this site. Allow them in your browser's site settings, then come back.",
     "note": "Delivery time depends on the server's reminder schedule."
+  },
+  "install": {
+    "title": "Install the app",
+    "description": "Add SayLater to your home screen to open it like a normal app, full screen.",
+    "install": "Install SayLater",
+    "installed": "SayLater is installed on this device.",
+    "dismissed": "Installation was cancelled. You can try again any time.",
+    "manualTitle": "If no install button appears, install from Chrome:",
+    "android1": "Open this page in Chrome (not inside another app).",
+    "android2": "Tap the ⋮ menu at the top.",
+    "android3": "Choose “Install app” or “Add to Home screen”, then confirm.",
+    "iosTitle": "Install on iPhone or iPad:",
+    "ios1": "Open this page in Safari.",
+    "ios2": "Tap the Share button.",
+    "ios3": "Choose “Add to Home Screen”.",
+    "checks": "Install readiness",
+    "checkWorker": "Offline support is ready",
+    "checkPrompt": "The browser is offering installation",
+    "tip": "Chrome decides when to offer installation. Reload this page once, wait a few seconds, and check again. If you removed the app before, clear this site's data in Chrome (Site settings) and reload."
   }
 }

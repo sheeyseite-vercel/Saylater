@@ -2,11 +2,41 @@
 
 import { useEffect } from "react";
 
-/** Registers the minimal service worker (installability + offline page). It never caches user data. */
+export const INSTALL_READY_EVENT = "saylater:install-ready";
+
+/**
+ * - Registers the minimal service worker (installability + offline page; it never caches user data).
+ * - Captures Chrome's install prompt as early as possible (it can fire before Settings is opened).
+ * - Blocks pinch and double-tap zoom inside the app (the text-size setting replaces it).
+ */
 export function PwaRegister() {
   useEffect(() => {
-    if (process.env.NODE_ENV !== "production" || !("serviceWorker" in navigator)) return;
-    navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+    if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+    }
+
+    const onPrompt = (e: Event) => {
+      e.preventDefault();
+      (window as unknown as { __saylaterInstall?: Event }).__saylaterInstall = e;
+      window.dispatchEvent(new Event(INSTALL_READY_EVENT));
+    };
+    window.addEventListener("beforeinstallprompt", onPrompt);
+
+    // iOS Safari ignores user-scalable=no, so pinch is cancelled explicitly.
+    const stopGesture = (e: Event) => e.preventDefault();
+    const stopPinch = (e: TouchEvent) => {
+      if (e.touches.length > 1) e.preventDefault();
+    };
+    document.addEventListener("gesturestart", stopGesture);
+    document.addEventListener("gesturechange", stopGesture);
+    document.addEventListener("touchmove", stopPinch, { passive: false });
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", onPrompt);
+      document.removeEventListener("gesturestart", stopGesture);
+      document.removeEventListener("gesturechange", stopGesture);
+      document.removeEventListener("touchmove", stopPinch);
+    };
   }, []);
   return null;
 }

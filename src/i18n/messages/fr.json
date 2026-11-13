@@ -427,5 +427,24 @@
     "unsupported": "Ce navigateur ne gère pas les notifications. Sur iPhone, ajoutez d’abord SayLater à l’écran d’accueil.",
     "denied": "Les notifications sont bloquées pour ce site. Autorisez-les dans les réglages du navigateur, puis revenez.",
     "note": "L’heure de livraison dépend du calendrier d’exécution des rappels sur le serveur."
+  },
+  "install": {
+    "title": "Installer l’application",
+    "description": "Ajoutez SayLater à votre écran d’accueil pour l’ouvrir comme une vraie application, en plein écran.",
+    "install": "Installer SayLater",
+    "installed": "SayLater est installé sur cet appareil.",
+    "dismissed": "Installation annulée. Vous pouvez réessayer à tout moment.",
+    "manualTitle": "Si aucun bouton d’installation n’apparaît, installez depuis Chrome :",
+    "android1": "Ouvrez cette page dans Chrome (pas dans une autre application).",
+    "android2": "Touchez le menu ⋮ en haut.",
+    "android3": "Choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil », puis confirmez.",
+    "iosTitle": "Installer sur iPhone ou iPad :",
+    "ios1": "Ouvrez cette page dans Safari.",
+    "ios2": "Touchez le bouton Partager.",
+    "ios3": "Choisissez « Sur l’écran d’accueil ».",
+    "checks": "État de l’installation",
+    "checkWorker": "Le mode hors ligne est prêt",
+    "checkPrompt": "Le navigateur propose l’installation",
+    "tip": "Chrome décide du moment où il propose l’installation. Rechargez la page une fois, attendez quelques secondes et revérifiez. Si vous aviez supprimé l’application, effacez les données de ce site dans Chrome (Paramètres du site) puis rechargez."
   }
 }

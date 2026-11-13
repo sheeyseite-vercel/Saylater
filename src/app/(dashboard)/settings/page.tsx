@@ -6,6 +6,7 @@ import { getSessionUser } from "@/lib/firebase/session";
 import { ACCENT_COOKIE, FONT_COOKIE, SIZE_COOKIE, isAccent, isFont, isSize } from "@/lib/appearance";
 import { AppearanceSettings } from "@/components/settings/appearance-settings";
 import { AppLockSettings } from "@/components/settings/app-lock-settings";
+import { InstallSettings } from "@/components/settings/install-settings";
 import { NotificationSettings } from "@/components/settings/notification-settings";
 import { ProfileSettings } from "@/components/settings/profile-settings";
 
@@ -28,6 +29,7 @@ export default async function SettingsPage() {
       <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
       <ProfileSettings initialName={name} email={user.email ?? ""} />
       <AppearanceSettings initialFont={isFont(font) ? font : "default"} initialSize={isSize(size) ? size : "md"} initialAccent={isAccent(accent) ? accent : "blue"} />
+      <InstallSettings />
       <NotificationSettings />
       <AppLockSettings uid={user.uid} />
     </main>
