@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { LocalDate } from "@/components/ui/local-date";
-import { StatusBadge } from "./status-badge";
 import { formatDuration } from "@/lib/format";
 import type { Recording } from "@/types/domain";
 
@@ -20,7 +19,6 @@ export function RecordingList({ items }: { items: Recording[] }) {
                 <LocalDate iso={r.createdAt} />
               </p>
             </div>
-            <StatusBadge status={r.processingStatus} />
           </Link>
         </li>
       ))}

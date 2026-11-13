@@ -146,11 +146,6 @@ export function RecorderPanel({ uid }: { uid: string }) {
       if (audio.sessionId) await deleteSession(audio.sessionId); // only after the server confirmed
       // Start transcription + analysis server-side; it returns immediately and the detail page polls.
       // A failure here is not fatal: the detail page offers a manual "Transcribe" button.
-      await fetch(`/api/recordings/${id}/process`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ timezone: Intl.DateTimeFormat().resolvedOptions().timeZone }),
-      }).catch(() => undefined);
       await revalidateRecordings(); // so the list and dashboard show it immediately
       router.push(`/recordings/${id}`);
     } catch (e) {

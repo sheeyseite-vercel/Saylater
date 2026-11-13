@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { LocalDate } from "@/components/ui/local-date";
 import { formatBytes, formatDuration } from "@/lib/format";
 import { revalidateRecordings } from "@/features/recordings/actions";
-import { ProcessingPanel } from "./processing-panel";
 import type { Recording } from "@/types/domain";
 
 type Pending = null | "rename" | "audio" | "all";
@@ -125,8 +124,6 @@ export function RecordingDetail({ recording }: { recording: Recording }) {
           </div>
         </dl>
       </section>
-
-      <ProcessingPanel recording={recording} />
 
       <section className="glass space-y-3 rounded-2xl p-6">
         {confirm === null ? (

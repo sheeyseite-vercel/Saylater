@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "SayLater",
     short_name: "SayLater",
     description: "Speak it. We'll organize it.",
-    start_url: "/dashboard",
+    start_url: "/recordings",
     scope: "/",
     display: "standalone",
     orientation: "portrait",

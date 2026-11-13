@@ -17,7 +17,7 @@ export function RecButton({ variant }: { variant: "fab" | "block" }) {
       className={cn(
         "btn-solid inline-flex items-center justify-center gap-2 bg-primary font-semibold text-primary-foreground",
         variant === "fab"
-          ? "shadow-lg fixed end-4 bottom-[calc(5.25rem+env(safe-area-inset-bottom))] z-20 h-14 rounded-full px-5 md:hidden"
+          ? "shadow-lg fixed end-4 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-20 h-14 rounded-full px-6"
           : "h-12 w-full rounded-xl",
       )}
     >

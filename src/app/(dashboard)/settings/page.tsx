@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
@@ -7,13 +8,13 @@ import { ACCENT_COOKIE, FONT_COOKIE, SIZE_COOKIE, isAccent, isFont, isSize } fro
 import { AppearanceSettings } from "@/components/settings/appearance-settings";
 import { AppLockSettings } from "@/components/settings/app-lock-settings";
 import { InstallSettings } from "@/components/settings/install-settings";
-import { NotificationSettings } from "@/components/settings/notification-settings";
 import { ProfileSettings } from "@/components/settings/profile-settings";
 
 export default async function SettingsPage() {
   const user = await getSessionUser();
   if (!user) redirect("/login");
   const t = await getTranslations("settings");
+  const tr = await getTranslations("recordings");
   const jar = await cookies();
   const font = jar.get(FONT_COOKIE)?.value;
   const size = jar.get(SIZE_COOKIE)?.value;
@@ -26,11 +27,13 @@ export default async function SettingsPage() {
 
   return (
     <main className="mx-auto max-w-2xl space-y-6 px-4 py-6">
+      <Link href="/recordings" className="text-sm text-muted-foreground">
+        ← {tr("back")}
+      </Link>
       <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
       <ProfileSettings initialName={name} email={user.email ?? ""} />
       <AppearanceSettings initialFont={isFont(font) ? font : "default"} initialSize={isSize(size) ? size : "md"} initialAccent={isAccent(accent) ? accent : "blue"} />
       <InstallSettings />
-      <NotificationSettings />
       <AppLockSettings uid={user.uid} />
     </main>
   );
