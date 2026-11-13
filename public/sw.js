@@ -102,8 +102,8 @@ self.addEventListener("push", (event) => {
     self.registration.showNotification(data.title || "SayLater", {
       body: data.body || "",
       tag: data.tag,
-      icon: "/icons/192",
-      badge: "/icons/192",
+      icon: "/icons/icon-192.png",
+      badge: "/icons/icon-192.png",
       data: { url: typeof data.url === "string" && data.url.startsWith("/") ? data.url : "/calendar" },
     }),
   );
